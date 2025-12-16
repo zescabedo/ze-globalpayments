@@ -304,6 +304,23 @@ Languages:
                 name="ds" />
             </r>
             <r
+              uid="{20386F98-F28A-4CB0-8FAE-03DDDA7433B5}"
+              p:after="r[@uid='{36E87C5B-94DF-4C70-827E-E88DCCD07907}']"
+              s:ds="local:/Data/Hero 4"
+              s:id="{B7CDF75E-716A-4C59-B9B1-CD970AE0A4AE}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BA6053DA5-FCE4-4FFA-82F9-04625E1128AA%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=33"
+              s:ph="headless-main" />
+            <r
+              uid="{8A164438-9C67-4127-A80C-AB9A21C81FF2}"
+              p:after="r[@uid='{20386F98-F28A-4CB0-8FAE-03DDDA7433B5}']"
+              s:ds="local:/Data/Promo CTA 2"
+              s:id="{1A375FAC-6CC1-4A5A-A159-9BC6DBC66B80}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BE7077939-8F32-4C4F-AAAD-A7C53F623CE0%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=32"
+              s:ph="headless-main" />
+            <r
+              uid="{124106DE-FB02-4B43-A521-A309FC75A5BC}"
+              p:after="r[@uid='{8A164438-9C67-4127-A80C-AB9A21C81FF2}']" />
+            <r
               uid="{D49A8931-F041-4988-9CC3-F2400E6422D0}"
               p:after="r[@uid='{124106DE-FB02-4B43-A521-A309FC75A5BC}']"
               s:ds="local:/Data/Promo CTA 1"
@@ -327,17 +344,17 @@ Languages:
         sitecore\kaitlyn.folsom@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "123b0017-ad98-4caf-84f0-43940bf4de6b"
+      Value: "d74cf7ca-32df-4032-ad9c-b7758e523149"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\johannes.zijlstra@sitecore.com
+        sitecore\zach.escabedo@sitecore.com
     - ID: "d77eab5a-d654-445f-b15c-d32283737e1f"
       Hint: Title
       Value: "PLAY! Financial"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251030T165635Z
+      Value: 20251216T001351Z
 - Language: "fr-CA"
   Versions:
   - Version: 1
