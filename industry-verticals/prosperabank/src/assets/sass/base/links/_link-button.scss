@@ -7,7 +7,8 @@
   --button-secondary-color: var(--text-colored);
   --button-simple-color: var(--text-colored);
   --button-padding: 10px 50px;
-  --button-roundness: 40px;
+  // Global Payments pill buttons (match Hero/Storybook)
+  --button-roundness: 50px;
   --button-font-weight: 500;
   --button-font-size: 1.125rem;
 }
@@ -18,7 +19,8 @@
   --button-secondary-color: var(--text-body);
   --button-simple-color: var(--text-body);
   --button-padding: 1rem 1.5rem 0.75rem;
-  --button-roundness: var(--roundness);
+  // Global Payments pill buttons (match Hero/Storybook)
+  --button-roundness: 50px;
   --button-font-weight: 800;
   --button-font-size: 0.875rem;
   --button-text-transform: uppercase;

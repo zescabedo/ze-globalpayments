@@ -1,14 +1,51 @@
 .promo-cta.saturated {
-  background-color: var(--bg-color);
+  // Sitecore Style: "Saturated Background" should be a fixed brand color
+  // Requested: #2729FF (do NOT inherit site theme --bg-color, which is #C5E4F3 on .site-financial)
+  --bg-color: #2729FF;
+  --bg-saturated: #2729FF;
+  background-color: #2729FF;
+  color: var(--gpn-theme-white-255, #{$gpn-white});
 
-  .dark & {
-    .button-main {
-      background-color: var(--text-body);
-      color: var(--bg-body);
+  .eyebrow-accent {
+    color: var(--gpn-theme-white-255, #{$gpn-white});
+  }
+
+  // RichText renders nested tags (p/ul/li/a) that can pick up global black text.
+  // Force rich text content to inherit the saturated (white) component color.
+  .text-content {
+    color: inherit;
+
+    p,
+    li {
+      color: inherit;
+    }
+
+    a {
+      color: inherit;
 
       &:hover {
-        filter: brightness(85%);
+        color: rgba(255, 255, 255, 0.92);
       }
+    }
+  }
+
+  // PromoCta uses .btn classes; on a saturated background we invert for contrast
+  .btn.btn-base {
+    background-color: var(--gpn-theme-white-255, #{$gpn-white});
+    color: var(--gpn-theme-blue-500, #{$gpn-blue-500});
+    border-color: var(--gpn-theme-white-255, #{$gpn-white});
+
+    &:hover:not(:disabled) {
+      background-color: rgba(255, 255, 255, 0.92);
+      border-color: rgba(255, 255, 255, 0.92);
+    }
+  }
+
+  .btn-link {
+    color: var(--gpn-theme-white-255, #{$gpn-white});
+
+    &:hover:not(:disabled) {
+      color: rgba(255, 255, 255, 0.92);
     }
   }
 }

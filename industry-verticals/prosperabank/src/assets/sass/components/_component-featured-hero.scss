@@ -116,7 +116,11 @@
 
 // Hero Text Block
 .hero-text-block {
-  max-width: 720px;
+  // Match the media block width so the heading aligns with the hero image width.
+  // The media block is full-width within the Bootstrap container, so we avoid
+  // artificially narrowing the heading area here.
+  max-width: 100%;
+  width: 100%;
   position: relative;
   z-index: 2;
   text-align: center;

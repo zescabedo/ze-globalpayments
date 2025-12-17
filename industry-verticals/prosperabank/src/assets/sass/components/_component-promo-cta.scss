@@ -1,35 +1,107 @@
 .site-financial {
   --promo-cta-img-ratio: 3/2;
   --promo-cta-text-opacity: 1;
-  --promo-cta-text-size: 1.25rem;
+  // Align Promo CTA body text to Global Payments typography scale
+  --promo-cta-text-size: var(--gpn-body-md-size, #{$gpn-body-md-size});
 }
 
 .site-services {
   --promo-cta-img-ratio: 1/1;
   --promo-cta-text-opacity: 0.65;
-  --promo-cta-text-size: 1rem;
+  // Align Promo CTA body text to Global Payments typography scale
+  --promo-cta-text-size: var(--gpn-body-md-size, #{$gpn-body-md-size});
 }
 
 .promo-cta {
   font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: var(--bg-main-alt);
-  padding-top: $component-margin * 2;
-  padding-bottom: $component-margin * 2;
+  // Default (no Sitecore style applied): use GlobalPayments light background
+  // Requested default: #DDF2FF
+  background-color: var(--gpn-theme-light, #{$gpn-theme-light});
+  color: var(--gpn-theme-black-950, #{$gpn-black-950});
+  padding-top: var(--gpn-spacing-xxl-desktop, #{$gpn-spacing-xxl-desktop});
+  padding-bottom: var(--gpn-spacing-xxl-desktop, #{$gpn-spacing-xxl-desktop});
+  --promo-cta-text-size: var(--promo-cta-text-size, var(--gpn-body-md-size, #{$gpn-body-md-size}));
   
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #0C0C0C; // Storybook text color
+  // Override Bootstrap col-12 class added by Sitecore SXA
+  // Remove column behavior to prevent dead space
+  &.col-12 {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
   }
   
-  p {
-    font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.8rem; // Storybook body font size
-    color: #0C0C0C; // Storybook text color
+  // Hide empty components (no content) to prevent dead space from stuck/deleted components
+  &:empty,
+  &:not(:has(*)) {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  // Match Hero behavior: typography utility classes should inherit component color
+  .display-xxl,
+  .display-xl,
+  .display-lg,
+  .display-md,
+  .body-md,
+  .body-sm,
+  .label-md,
+  .label-sm-form,
+  .label-xs-form {
+    color: inherit;
   }
 
+  // Background variants (so SXA "styles" can reuse the same classes as Hero)
+  &.bg-white {
+    background-color: var(--gpn-theme-white-255, #{$gpn-white});
+    color: var(--gpn-theme-black-950, #{$gpn-black-950});
+  }
+
+  &.featured-bg-faint {
+    background-color: var(--gpn-theme-grey-110, #{$gpn-grey-110});
+  }
+
+  &.featured-bg-subtle {
+    background-color: var(--gpn-theme-grey-120, #{$gpn-grey-120});
+  }
+
+  &.featured-bg-medium {
+    background-color: var(--gpn-theme-grey-200, #{$gpn-grey-200});
+  }
+
+  &.featured-bg-light,
+  &.featured-bg-bright {
+    background-color: var(--gpn-theme-light, #{$gpn-theme-light});
+  }
+
+  &.featured-bg-base {
+    background-color: var(--gpn-theme-base, #{$gpn-blue-500});
+    color: var(--gpn-theme-white-255, #{$gpn-white});
+  }
+
+  &.featured-bg-dark {
+    background-color: var(--gpn-theme-dark, #{$gpn-blue-600});
+    color: var(--gpn-theme-white-255, #{$gpn-white});
+  }
+
+  @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
+    padding-top: var(--gpn-spacing-xl-mobile, #{$gpn-spacing-xl-mobile});
+    padding-bottom: var(--gpn-spacing-xl-mobile, #{$gpn-spacing-xl-mobile});
+  }
+
+  // Keep existing spacing behavior for smaller breakpoints
   @include respond-to(mobile-large) {
     padding-left: $size-padding;
     padding-right: $size-padding;
+  }
+
+  // Eyebrow styling aligned to Global Payments brand blue
+  .eyebrow-accent {
+    color: var(--gpn-theme-blue-500, #{$gpn-blue-500});
   }
 
   &.with-dotted-accents {
@@ -81,16 +153,327 @@
   }
 
   .main-content {
-    --bs-gutter-x: 8rem;
-    --bs-gutter-y: 3rem;
+    --bs-gutter-x: var(--gpn-spacing-xxl-desktop, #{$gpn-spacing-xxl-desktop});
+    --bs-gutter-y: var(--gpn-spacing-lg-desktop, #{$gpn-spacing-lg-desktop});
+
+    @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
+      --bs-gutter-x: var(--gpn-spacing-xl-mobile, #{$gpn-spacing-xl-mobile});
+      --bs-gutter-y: var(--gpn-spacing-lg-mobile, #{$gpn-spacing-lg-mobile});
+    }
   }
 
   .text-content {
     opacity: var(--promo-cta-text-opacity);
+
+    // RichText can render lists (ul/ol) that pick up default left indentation.
+    // Remove left offset so the rich text aligns with the title.
+    ul,
+    ol {
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    li {
+      margin-left: 0;
+    }
   }
 
   .promo-cta-text {
     font-size: var(--promo-cta-text-size);
+
+    // Ensure proper spacing between text elements
+    p {
+      margin-bottom: 0; // Remove default paragraph margin, use utility classes instead
+    }
+
+    // Spacing for RichText content
+    .text-content {
+      margin-bottom: 0; // Remove default margin, use utility classes instead
+    }
+  }
+
+  // Default variant spacing adjustments
+  &:not(.with-placeholder-column):not(.with-background-image) {
+    .eyebrow-accent {
+      margin-bottom: var(--gpn-spacing-md-desktop, #{$gpn-spacing-md-desktop});
+      
+      @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
+        margin-bottom: var(--gpn-spacing-md-mobile, #{$gpn-spacing-md-mobile});
+      }
+    }
+
+    .display-lg {
+      margin-bottom: var(--gpn-spacing-xs-desktop, #{$gpn-spacing-xs-desktop});
+    }
+
+    .promo-cta-text {
+      p.body-md {
+        margin-bottom: var(--gpn-spacing-md-desktop, #{$gpn-spacing-md-desktop});
+        
+        @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
+          margin-bottom: var(--gpn-spacing-md-mobile, #{$gpn-spacing-md-mobile});
+        }
+      }
+
+      .text-content {
+        margin-bottom: var(--gpn-spacing-xl-desktop, #{$gpn-spacing-xl-desktop});
+        
+        @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
+          margin-bottom: var(--gpn-spacing-xl-mobile, #{$gpn-spacing-xl-mobile});
+        }
+      }
+
+      .row {
+        margin-bottom: var(--gpn-spacing-md-desktop, #{$gpn-spacing-md-desktop});
+        
+        @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
+          margin-bottom: var(--gpn-spacing-md-mobile, #{$gpn-spacing-md-mobile});
+        }
+      }
+    }
+  }
+
+  // Promo CTA link/button (matches provided design)
+  .promo-cta-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.6rem;
+    font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: var(--gpn-body-md-size, #{$gpn-body-md-size});
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--gpn-theme-black-950, #{$gpn-black-950});
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    min-height: 4.4rem;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, padding-left 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    // Background shape: circle (default) → pill (hover)
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 4.4rem; // matches icon size, shows as a circle by default
+      height: 4.4rem;
+      transform: translateY(-50%);
+      border-radius: 999px;
+      background-color: var(--gpn-theme-blue-500, #{$gpn-blue-500});
+      transition: width 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s ease-in-out;
+      z-index: 0;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--gpn-theme-blue-500, #{$gpn-blue-500});
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+
+    &__text {
+      text-decoration: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    &__icon {
+      width: 4.4rem;
+      height: 4.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    &__icon-inner {
+      color: var(--gpn-theme-white-255, #{$gpn-white});
+      display: inline-flex;
+      transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    &:hover {
+      // Expand the background from the icon circle to the full pill width
+      padding-left: 2.4rem;
+      color: var(--gpn-theme-white-255, #{$gpn-white});
+
+      &::before {
+        width: 100%;
+        background-color: var(--gpn-theme-blue-500, #{$gpn-blue-500});
+      }
+
+      .promo-cta-link__icon-inner {
+        transform: translateX(2px);
+      }
+    }
+
+    // Secondary CTA uses same pattern but keeps the icon aligned
+    &--secondary {
+      color: inherit;
+    }
+  }
+
+  // Text-only link (for Link2 - no button, just styled text)
+  .promo-cta-link-text-only {
+    display: inline-block;
+    font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: var(--gpn-body-md-size, #{$gpn-body-md-size});
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--gpn-theme-blue-500, #{$gpn-blue-500});
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 2px;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--gpn-theme-blue-600, #{$gpn-blue-600});
+      text-decoration-thickness: 2px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--gpn-theme-blue-500, #{$gpn-blue-500});
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+  }
+
+  // Saturated variant: text-only link should be white
+  &.saturated {
+    .promo-cta-link-text-only {
+      color: var(--gpn-theme-white-255, #{$gpn-white});
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.92);
+      }
+    }
+  }
+
+  // Saturated variant: keep the link readable
+  &.saturated {
+    .promo-cta-link {
+      color: var(--gpn-theme-white-255, #{$gpn-white});
+
+      &::before {
+        background-color: var(--gpn-theme-white-255, #{$gpn-white});
+      }
+
+      .promo-cta-link__icon-inner {
+        color: var(--gpn-theme-blue-500, #{$gpn-blue-500});
+      }
+
+      &:hover {
+        color: var(--gpn-theme-blue-500, #{$gpn-blue-500});
+
+        &::before {
+          background-color: rgba(255, 255, 255, 0.92);
+        }
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .promo-cta-link,
+    .promo-cta-link__icon,
+    .promo-cta-link__icon-inner {
+      transition: none !important;
+    }
+  }
+
+  // Default variant: contained image with offset text
+  // Image width matches Hero component (full width of container)
+  // Only apply when NOT using image-left or image-right (side-by-side layout)
+  &:not(.with-placeholder-column):not(.with-background-image):not(.image-left):not(.image-right) {
+    .main-content {
+      > .col-12:first-child {
+        // Offset text content to create visual relationship with image
+        // More pronounced offset to match design
+        padding-left: var(--gpn-spacing-xxxl-desktop, #{$gpn-spacing-xxxl-desktop});
+        
+        @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
+          padding-left: var(--gpn-spacing-xxl-mobile, #{$gpn-spacing-xxl-mobile});
+        }
+        
+        @include respond-to(tablet) {
+          padding-left: var(--gpn-spacing-xxl-tablet, #{$gpn-spacing-xxl-tablet});
+        }
+      }
+    }
+
+    .image-wrapper {
+      // Match Hero component image width: full width of container
+      width: 100%;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      
+      img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  // Side-by-side layout (reverse for Image Left, or default side-by-side for Image Right)
+  // Applies to all variants that use side-by-side layout
+  &.reverse,
+  &.image-left,
+  &.image-right {
+    .main-content {
+      align-items: center;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      max-width: 100%;
+      
+      img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  // Horizontal variant - always side-by-side, styling options control image position
+  // This variant doesn't need special class, it's handled by the component logic
+  // The reverse and image-right classes will work with this variant via the above rules
+
+  // Default styling option - ensure stacked layout (override any side-by-side)
+  &.default {
+    .main-content {
+      flex-direction: column !important;
+      
+      > .col-12:first-child {
+        padding-left: var(--gpn-spacing-xxxl-desktop, #{$gpn-spacing-xxxl-desktop});
+        
+        @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
+          padding-left: var(--gpn-spacing-xxl-mobile, #{$gpn-spacing-xxl-mobile});
+        }
+        
+        @include respond-to(tablet) {
+          padding-left: var(--gpn-spacing-xxl-tablet, #{$gpn-spacing-xxl-tablet});
+        }
+      }
+    }
+
+    .image-wrapper {
+      width: 100%;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      
+      img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+    }
   }
 
   .image-wrapper {
@@ -100,13 +483,18 @@
       aspect-ratio: var(--promo-cta-img-ratio);
       width: 100%;
       object-fit: cover;
-      border-radius: var(--roundness);
+      border-radius: 0.4rem; // Match Featured Hero image rounding
       overflow: hidden;
     }
   }
 
-  &.no-background,
-  .page-background .background-content & {
+  // Sitecore style option: "No background" should be white
+  &.no-background {
+    background-color: var(--gpn-theme-white-255, #{$gpn-white}) !important;
+  }
+
+  // Preserve legacy behavior when PromoCta is placed inside a Page Background component
+  .page-background .background-content &:not(.no-background) {
     background-color: $bg-transparent !important;
     padding-top: 0;
     padding-bottom: 0;
@@ -115,21 +503,58 @@
   }
 
   &.with-background-image {
+    position: relative;
     display: flex;
     align-items: center;
     background-color: $bg-transparent !important;
     min-height: 70vh;
+    overflow: hidden; // Ensure image doesn't overflow
+
+    // Default center alignment for all text (can be overridden by position-left/right/center classes)
+    text-align: center;
 
     .container {
       position: relative;
       z-index: 2;
     }
 
+    .main-content {
+      text-align: center;
+    }
+
+    // Ensure all text elements are centered by default
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    .body-md,
+    .text-content,
+    .display-xl,
+    .display-lg,
+    .display-md {
+      text-align: center;
+    }
+
+    // Center the button/link
+    .promo-cta-link {
+      display: inline-flex;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .parallax-background-image,
     .background-image {
       position: absolute !important;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 1;
+      object-fit: cover;
+      border-radius: 0 !important; // No rounded corners
       /* stylelint-disable */
       mask-image: radial-gradient(
         ellipse,
@@ -137,6 +562,22 @@
         rgba(255, 255, 255, 0.7) 100%
       );
       /* stylelint-enable */
+    }
+
+    // ParallaxBanner from react-scroll-parallax wraps content in nested divs
+    .parallax-background-image {
+      > div {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0 !important;
+
+        img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          border-radius: 0 !important;
+        }
+      }
     }
   }
 
@@ -150,8 +591,8 @@
       z-index: 3;
 
       &-inner {
-        border: 1px solid var(--border-color);
-        background-color: var(--bg-body);
+        border: 1px solid var(--gpn-theme-grey-300, #{$gpn-grey-300});
+        background-color: var(--gpn-theme-white-255, #{$gpn-white});
         padding: 2rem 3rem;
       }
 

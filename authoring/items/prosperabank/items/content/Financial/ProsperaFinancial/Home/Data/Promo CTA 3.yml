@@ -1,15 +1,8 @@
 ﻿---
-ID: "8ff063ab-c9f1-4628-a0b1-2afb5e7f5560"
-Parent: "baa7750c-6f60-479a-84f2-f74c6db52b6c"
-Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/Financial/Components/Hero/Data/Link
-SharedFields:
-- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
-  Hint: Type
-  Value: General Link
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 400
+ID: "9e65adb0-a4f2-45ed-9e7f-77d98110eae1"
+Parent: "5109a19b-e647-4ef6-9b82-c6d8645fed58"
+Template: "c0943942-ae0f-4205-86fa-84884cce4a53"
+Path: /sitecore/content/Financial/ProsperaFinancial/Home/Data/Promo CTA 3
 Languages:
 - Language: en
   Versions:
@@ -17,18 +10,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20251216T234816Z
+      Value: 20251217T191517Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\zach.escabedo@sitecore.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\zach.escabedo@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2646ae44-880d-4bdd-9f02-7ab2cb21c0c7"
+      Value: "64fdf46f-b902-4832-b36b-7efc39c9c6ad"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\zach.escabedo@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251216T234816Z
+      Value: 20251217T191517Z
