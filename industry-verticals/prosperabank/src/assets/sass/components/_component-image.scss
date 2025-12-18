@@ -1,20 +1,100 @@
-@import 'src/assets/sass/abstracts/vars';
+// Image Component Styles
+// Displays a single image with optional caption
 
-.image {
-  img {
-    max-width: 100%;
-    height: auto;
+.component.image {
+  padding-top: var(--gpn-spacing-xl-desktop, 3rem);
+  padding-bottom: var(--gpn-spacing-xl-desktop, 3rem);
+  
+  @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
+    padding-top: var(--gpn-spacing-xl-mobile, 2rem);
+    padding-bottom: var(--gpn-spacing-xl-mobile, 2rem);
   }
 
-  a {
-    display: inline-block;
-    max-width: 100%;
+  .component-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--gpn-border-radius-md, 0.5rem);
+      max-width: 100%;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      
+      img {
+        transition: opacity 0.3s ease;
+        
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
   }
 
-  .image-caption {
-    display: block;
+  .image-caption,
+  .field-imagecaption {
+    color: var(--gpn-theme-gray-600, #6b7280);
+    text-align: center;
     font-style: italic;
-    font-size: $font-small;
-    color: $image-caption-color;
+    margin-top: var(--gpn-spacing-sm-desktop, 0.5rem);
+    display: block;
+    width: 100%;
+  }
+
+  .is-empty-hint {
+    color: var(--gpn-theme-gray-600, #6b7280);
+    font-style: italic;
+    padding: var(--gpn-spacing-lg-desktop, 2rem);
+    background-color: var(--gpn-theme-gray-50, #f9fafb);
+    border: 2px dashed var(--gpn-theme-gray-300, #d1d5db);
+    border-radius: var(--gpn-border-radius-md, 0.5rem);
+    text-align: center;
+    display: block;
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  // Override Bootstrap col-12 class added by Sitecore SXA
+  &.col-12 {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // No background variant
+  &.no-background {
+    background-color: transparent;
+  }
+
+  // Page background integration
+  &.page-background {
+    background-color: var(--page-background-color, transparent);
+  }
+}
+
+// Hero Banner variant
+.component.hero-banner {
+  position: relative;
+  min-height: 400px;
+  
+  .component-content.sc-sxa-image-hero-banner {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: var(--gpn-border-radius-lg, 1rem);
   }
 }

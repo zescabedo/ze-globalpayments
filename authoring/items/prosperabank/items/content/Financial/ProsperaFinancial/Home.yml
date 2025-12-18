@@ -313,16 +313,23 @@ Languages:
             <r
               uid="{20386F98-F28A-4CB0-8FAE-03DDDA7433B5}"
               p:after="r[@uid='{36E87C5B-94DF-4C70-827E-E88DCCD07907}']"
-              s:ds="local:/Data/Hero 4"
+              s:ds="ef90ce9e-79a9-4d7d-b926-3f3127873be3"
               s:id="{B7CDF75E-716A-4C59-B9B1-CD970AE0A4AE}"
               s:par="FieldNames=%7BA6053DA5-FCE4-4FFA-82F9-04625E1128AA%7D&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;DynamicPlaceholderId=33"
               s:ph="headless-main" />
             <r
-              uid="{8BC96DA7-CB62-4D13-AC55-6E354552F95C}"
+              uid="{E9B8901C-76E9-4468-91C8-AFED599030D4}"
               p:after="r[@uid='{20386F98-F28A-4CB0-8FAE-03DDDA7433B5}']"
+              s:ds="bb26364e-e0fe-4f3f-9b67-1b08e4f4dac5"
+              s:id="{B7CDF75E-716A-4C59-B9B1-CD970AE0A4AE}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7B8C0B170B-6CC4-4701-A8A2-B03A65B2524C%7D&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=35"
+              s:ph="headless-main" />
+            <r
+              uid="{8BC96DA7-CB62-4D13-AC55-6E354552F95C}"
+              p:after="r[@uid='{E9B8901C-76E9-4468-91C8-AFED599030D4}']"
               s:ds="local:/Data/Promo CTA 4"
               s:id="{1A375FAC-6CC1-4A5A-A159-9BC6DBC66B80}"
-              s:par="FieldNames=%7BE7077939-8F32-4C4F-AAAD-A7C53F623CE0%7D&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;DynamicPlaceholderId=34"
+              s:par="FieldNames=%7B7D65F757-6E64-417A-9ED9-56868717574D%7D&amp;RenderingIdentifier&amp;Styles=%7C%7B96542870-8A0D-48D0-A440-FA4F7B9B9625%7D&amp;CSSStyles&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;DynamicPlaceholderId=34"
               s:ph="headless-main" />
             <r
               uid="{124106DE-FB02-4B43-A521-A309FC75A5BC}"
@@ -368,7 +375,7 @@ Languages:
         sitecore\kaitlyn.folsom@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1e94f9c9-0ae4-4747-9e7e-730e7b0e3a54"
+      Value: "14e26679-f40d-449d-a013-e68e3a62c0b0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -378,7 +385,7 @@ Languages:
       Value: "PLAY! Financial"
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251217T203746Z
+      Value: 20251218T011847Z
 - Language: "fr-CA"
   Versions:
   - Version: 1

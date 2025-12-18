@@ -1,15 +1,18 @@
 ﻿---
-ID: "1f82a687-0683-426f-b12a-4b2100a6a481"
+ID: "326f3fb4-ff4f-423c-87c6-2cc15a8eed22"
 Parent: "0799ce0d-c5c5-49df-a3e1-93cfb71e95b9"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/Financial/Components/Promo CTA/Data/Title
+Path: /sitecore/templates/Project/Financial/Components/Promo CTA/Data/Video
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: "Single-Line Text"
+  Value: Image
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 50
+  Value: 400
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "2c08da40-d608-4d42-9126-1de3d2f36c0a"
 Languages:
 - Language: en
   Versions:
@@ -17,14 +20,18 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20251217T205514Z
+      Value: 20251217T205515Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\zach.escabedo@sitecore.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\zach.escabedo@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "448f7733-d898-4537-8843-79a31167ec79"
+      Value: "9c28b17d-f7a5-4a66-ba52-d3dac86bb4b0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |

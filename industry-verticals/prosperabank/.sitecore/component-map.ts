@@ -25,6 +25,7 @@ import * as Spinner from 'src/components/Search/components/Spinner/Spinner';
 import * as PreviewSearchIcon from 'src/components/Search/PreviewSearch/PreviewSearchIcon';
 import * as PreviewSearch from 'src/components/Search/PreviewSearch/PreviewSearch';
 import * as TwoColumnCta from 'src/components/PageContent/TwoColumnCta';
+import * as Title from 'src/components/PageContent/Title';
 import * as ThreeColumnCta from 'src/components/PageContent/ThreeColumnCta';
 import * as Testimonials from 'src/components/PageContent/Testimonials';
 import * as StatsCounter from 'src/components/PageContent/StatsCounter';
@@ -36,6 +37,7 @@ import * as ProjectDetails from 'src/components/PageContent/ProjectDetails';
 import * as ParallaxBanner from 'src/components/PageContent/ParallaxBanner';
 import * as PageBackground from 'src/components/PageContent/PageBackground';
 import * as ImageGallery from 'src/components/PageContent/ImageGallery';
+import * as Image from 'src/components/PageContent/Image';
 import * as HeroBanner from 'src/components/PageContent/HeroBanner';
 import * as Hero from 'src/components/PageContent/Hero';
 import * as HeadingCta from 'src/components/PageContent/HeadingCta';
@@ -89,6 +91,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['PreviewSearchIcon', { ...PreviewSearchIcon }],
   ['PreviewSearch', { ...PreviewSearch }],
   ['TwoColumnCta', { ...TwoColumnCta }],
+  ['Title', { ...Title, componentType: 'client' }],
   ['ThreeColumnCta', { ...ThreeColumnCta }],
   ['Testimonials', { ...Testimonials }],
   ['StatsCounter', { ...StatsCounter }],
@@ -100,6 +103,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ParallaxBanner', { ...ParallaxBanner }],
   ['PageBackground', { ...PageBackground }],
   ['ImageGallery', { ...ImageGallery }],
+  ['Image', { ...Image, componentType: 'client' }],
   ['HeroBanner', { ...HeroBanner }],
   ['Hero', { ...Hero }],
   ['HeadingCta', { ...HeadingCta }],

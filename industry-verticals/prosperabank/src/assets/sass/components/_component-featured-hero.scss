@@ -386,5 +386,187 @@
   }
 }
 
+// Large Scrolling Animation variant - scroll-driven color transition
+// Matches GlobalPayments.com implementation
+#AnimateHero2 {
+  min-width: 100%;
+  position: relative;
+
+  .animation-container2 {
+    text-align: center;
+
+    img {
+      max-width: 90%;
+    }
+  }
+
+  .main-text {
+    position: relative;
+    top: 30px;
+    z-index: 1;
+    padding-bottom: 100px;
+
+    h1 {
+      font-size: 70px;
+      line-height: normal;
+      font-weight: 900;
+      color: #000;
+    }
+
+    a:nth-child(n+2) {
+      margin-left: 20px;
+    }
+
+    @media (min-width: 3500px) {
+      h1 {
+        font-size: 180px;
+      }
+      padding-bottom: 200px;
+    }
+
+    @media (min-width: 2501px) and (max-width: 3499.99px) {
+      h1 {
+        font-size: 120px;
+      }
+      padding-bottom: 170px;
+    }
+
+    @media (max-width: 1601px) {
+      h1 {
+        font-size: 66px;
+      }
+    }
+
+    @media (max-width: 1439px) {
+      h1 {
+        font-size: 48px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 38px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 28px;
+        padding: 0 20px;
+      }
+    }
+  }
+
+  .animate-txt-container {
+    --bg: #fff;
+    --color: #262AFF;
+    --underline-width: 1lh;
+    --underline-block-width: 475vmax;
+    --underline-color: #d4d4d4;
+    --underline-transition: 5s;
+    --finish-fill: #262AFF;
+    --accent: #595959;
+    --fill: #262AFF;
+
+    @media (max-width: 1800px) {
+      --underline-block-width: 550vmax;
+    }
+
+    @media (max-width: 1601px) {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    @media (max-width: 850px) {
+      --underline-block-width: 550vmax;
+    }
+
+    p {
+      max-width: 100vw;
+      overflow: visible;
+      padding: 50px 20%;
+      margin: 0;
+      view-timeline-name: --text-block;
+
+      @media (max-width: 1800px) {
+        padding: 50px 10%;
+      }
+
+      @media (max-width: 767px) {
+        padding: 50px;
+      }
+    }
+
+    p > span {
+      outline-offset: 1ch;
+      font-size: 64px;
+      line-height: 72px;
+      font-weight: 900;
+      color: var(--color);
+      text-decoration-color: var(--color);
+      text-decoration: none;
+      background-image:
+        linear-gradient(90deg, transparent calc(100% - 20ch), var(--accent) calc(100% - 20ch)),
+        linear-gradient(90deg, var(--fill), var(--fill)),
+        linear-gradient(90deg, var(--underline-color), var(--underline-color));
+      background-size:
+        var(--underline-block-width) var(--underline-width),
+        var(--underline-block-width) var(--underline-width),
+        100% var(--underline-width);
+      background-repeat: no-repeat;
+      background-position-x: 0;
+      background-position-y: 100%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: var(--finish-fill);
+
+      @media (min-width: 2200px) {
+        font-size: 80px;
+        line-height: 90px;
+      }
+
+      @media (min-width: 3500px) {
+        font-size: 120px;
+        line-height: 130px;
+      }
+
+      @media (max-width: 1439px) {
+        font-size: 48px;
+        line-height: 52px;
+      }
+
+      @media (max-width: 767px) {
+        font-size: 28px;
+        line-height: 32px;
+      }
+    }
+
+    // Animation is handled via inline CSS in the component
+
+    main {
+      height: 100vh;
+      background-color: var(--bg);
+      color: var(--color);
+
+      @media (max-width: 850px) {
+        height: 70vh;
+      }
+    }
+
+    section {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100vw;
+      display: grid;
+      place-items: center;
+
+      @media (max-width: 850px) {
+        height: 70vh;
+      }
+    }
+  }
+}
+
 
 

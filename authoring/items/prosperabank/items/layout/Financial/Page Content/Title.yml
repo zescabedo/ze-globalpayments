@@ -1,45 +1,36 @@
 ﻿---
-ID: "b83e7e93-8dd8-4fa8-ada5-dc78c4b084a0"
+ID: "7792f023-3147-4cc2-91b1-3220d43d5ac1"
 Parent: "41452cad-79a8-4389-bd0f-52e1ebe7a8f9"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: /sitecore/layout/Renderings/Project/Financial/Page Content/Image
+Path: /sitecore/layout/Renderings/Project/Financial/Page Content/Title
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: Image
+  Value: Title
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: Applications/16x16/photo_scenery.png
+  Value: Applications/32x32/font.png
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: /sitecore/templates/Feature/JSS Experience Accelerator/Media/Image
-- ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
-  Hint: Open Properties after Add
-  Value: 0
-- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
-  Hint: Parameters Template
-  Value: "{A65AEA73-8224-408B-913C-B1CEDAE0C443}"
+  Value: /sitecore/templates/Project/Financial/Components/Title
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: /sitecore/content/Financial/ProsperaFinancial/Data/Images
+  Value: /sitecore/content/Financial/ProsperaFinancial/Data/Texts
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "661077aa-03ac-4b3d-9b93-cd49085a50fa"
-- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
-  Hint: OtherProperties
-  Value: IsAutoDatasourceRendering=true&IsRenderingsWithDynamicPlaceholders=true
+  Value: "d21fff76-8224-4ea6-974c-c0971e153553"
 Languages:
 - Language: en
   Fields:
   - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
     Hint: __Unversioned revision
-    Value: "fd2f6c2f-2192-459f-9acf-c00022fefa6d"
+    Value: "1b38bbc4-0342-435a-be11-5e23001bfaa1"
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20251215T174508Z
+      Value: 20251217T230814Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -50,11 +41,11 @@ Languages:
         sitecore\zach.escabedo@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "dbb0316f-e5eb-4f1f-bb8e-50e622ca900d"
+      Value: "d89dbfdd-87fd-458b-bfef-a294ac6f5cd6"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\zach.escabedo@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251217T232543Z
+      Value: 20251217T232008Z

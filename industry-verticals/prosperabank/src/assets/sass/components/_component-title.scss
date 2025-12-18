@@ -1,0 +1,71 @@
+// Title Component Styles
+// Displays a page or section title with optional link
+
+.component.title {
+  padding-top: var(--gpn-spacing-lg-desktop, 2rem);
+  padding-bottom: var(--gpn-spacing-lg-desktop, 2rem);
+  
+  @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
+    padding-top: var(--gpn-spacing-lg-mobile, 1.5rem);
+    padding-bottom: var(--gpn-spacing-lg-mobile, 1.5rem);
+  }
+
+  .component-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .field-title {
+    font-size: var(--gpn-font-size-display-lg, 2.5rem);
+    font-weight: var(--gpn-font-weight-bold, 700);
+    line-height: var(--gpn-line-height-tight, 1.2);
+    color: var(--gpn-theme-gray-900, #111827);
+    
+    @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
+      font-size: var(--gpn-font-size-display-md, 2rem);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--gpn-theme-blue-600, #2563eb);
+      }
+    }
+  }
+
+  // Override Bootstrap col-12 class added by Sitecore SXA
+  &.col-12 {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // No background variant
+  &.no-background {
+    background-color: transparent;
+  }
+
+  // Page background integration
+  &.page-background {
+    background-color: var(--page-background-color, transparent);
+  }
+
+  // Center alignment option
+  &.text-center {
+    .field-title {
+      text-align: center;
+    }
+  }
+
+  // Right alignment option
+  &.text-end {
+    .field-title {
+      text-align: right;
+    }
+  }
+}

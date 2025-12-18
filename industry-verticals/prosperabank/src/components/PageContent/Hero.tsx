@@ -268,3 +268,66 @@ export const Default = (props: HeroProps): JSX.Element => {
     </div>
   );
 };
+
+export const LargeScrollingAnimation = (props: HeroProps): JSX.Element => {
+  const id = props.params.RenderingIdentifier || 'AnimateHero2';
+  const { page } = useSitecore();
+  const isPageEditing = page.mode.isEditing;
+  const sxaStyles = `${props.params?.styles || ''}`;
+  
+  const title = props.fields?.Title;
+  const titleText = title?.value ? String(title.value) : '';
+
+  // In editing mode, show a simplified version that can be edited
+  if (isPageEditing) {
+    return (
+      <div className={`component hero large-scrolling-animation ${sxaStyles}`} id={id}>
+        <div className="container">
+          <div className="component-content">
+            <div className="field-title" style={{ fontSize: '64px', fontWeight: 900, color: '#2729FF', textAlign: 'center' }}>
+              <Text field={title} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // In normal mode, show the animated version
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{__html: `
+        @supports (animation-timeline: scroll()) {
+          @media (prefers-reduced-motion: no-preference) {
+            #AnimateHero2 .animate-txt-container p > span {
+              background-position-x: calc(var(--underline-block-width) * -1), calc(var(--underline-block-width) * -1), 0 !important;
+              color: transparent !important;
+              animation-name: fill-up-hero-inline, color-in-hero-inline;
+              animation-fill-mode: both;
+              animation-timing-function: linear;
+              animation-timeline: --text-block;
+              animation-range: entry 10% cover 70%, cover 70% exit 100%;
+            }
+            @keyframes fill-up-hero-inline {
+              to { background-position-x: 0, 0, 0; }
+            }
+            @keyframes color-in-hero-inline {
+              to { color: var(--finish-fill); }
+            }
+          }
+        }
+      `}} />
+      <div id="AnimateHero2" className={`component hero large-scrolling-animation ${sxaStyles}`}>
+        <div className="animate-txt-container">
+          <main>
+            <section>
+              <p>
+                <span>{titleText}</span>
+              </p>
+            </section>
+          </main>
+        </div>
+      </div>
+    </>
+  );
+};
