@@ -5,3 +5,6 @@
  * This file exists only for backwards compatibility with existing imports
  */
 export { NextImage } from '@sitecore-content-sdk/nextjs';
+
+
+

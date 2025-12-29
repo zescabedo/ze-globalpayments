@@ -10,14 +10,14 @@ SharedFields:
 - ID: "069a8361-b1cd-437c-8c32-a3be78941446"
   Hint: Placeholders
   Value: |
-    {7F3A1598-C7AF-4962-B3E9-4A2FA9BA6156}
-    {BF51BE21-1DF2-43FC-8319-10663C28355C}
+    {06482149-F5C2-41A0-B762-69CDA385983C}
+    {C3D6A002-5608-43C8-A8CF-1A3CBEFDFF77}
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: Apps/32x32/Routes.png
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: 
+  Value: /sitecore/templates/Project/Financial/Components/Header
 - ID: "592a1ce7-abe0-4986-9783-0a34f3961dc0"
   Hint: Placeholder
   Value: 
@@ -35,10 +35,13 @@ SharedFields:
   Value: 
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: 
+  Value: /sitecore/content/Financial/ProsperaFinancial/Data/Headers
 - ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
   Hint: AddFieldEditorButton
   Value: 
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "9b786b81-d9d0-4a0b-908d-529e1e194ea7"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: 
@@ -56,15 +59,32 @@ Languages:
       Value: "a1819759-a311-410f-966e-e1ee723be5fd"
 - Language: en
   Fields:
+  - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
+    Hint: __Unversioned revision
+    Value: "7d53e8d7-5ca0-4e28-bef8-e77130e34c5a"
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
     Value: 
   Versions:
   - Version: 1
     Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20251218T215921Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\zach.escabedo@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "3913afca-622d-423e-8758-634f6c353210"
+      Value: "2656be88-8f2c-4996-873e-71539743aaa9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\zach.escabedo@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20251219T022603Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

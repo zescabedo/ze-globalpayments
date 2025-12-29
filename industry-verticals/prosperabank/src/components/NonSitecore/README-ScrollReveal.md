@@ -129,3 +129,6 @@ The component is designed to be flexible. You can:
 - Use any valid CSS color format (hex, rgb, rgba, named colors)
 - Adjust animation timing with scroll thresholds
 - Choose animation direction (horizontal or vertical)
+
+
+

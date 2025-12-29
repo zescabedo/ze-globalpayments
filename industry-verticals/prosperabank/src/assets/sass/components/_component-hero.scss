@@ -389,16 +389,20 @@
 
   // Large Text Hero Variant (static, no animations)
   &.large-scrolling-animation {
-    min-height: 100vh;
+    min-height: auto; // Removed 100vh to match GlobalPayments.com compact spacing
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--gpn-spacing-xxl-desktop, #{$gpn-spacing-xxl-desktop}) 0;
+    padding: 80px 0; // Much tighter padding to match GP.com (reduced from xxl-desktop)
     background: #fff;
     overflow: visible;
 
     @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
-      padding: var(--gpn-spacing-xl-mobile, #{$gpn-spacing-xl-mobile}) 0;
+      padding: 60px 0; // Tighter mobile padding to match GP.com
+    }
+
+    @media (max-width: 767px) {
+      padding: 40px 0; // Even tighter on small mobile
     }
 
     .container {
@@ -420,17 +424,33 @@
       text-align: center;
 
       .hero-heading {
-        font-size: clamp(3rem, 8vw, 8rem);
+        font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 70px; // Desktop XL (1728px+) - Matches GlobalPayments.com
         font-weight: 900;
-        line-height: 1.2;
+        line-height: normal;
+        letter-spacing: normal;
         margin: 0;
         padding: 0;
+        padding-bottom: 16px; // Consistent across all breakpoints like GP.com
         color: #2729FF;
         word-wrap: break-word;
         hyphens: auto;
 
-        @include respond-to(mobile-large) {
-          font-size: clamp(2rem, 10vw, 4rem);
+        // Desktop Large (1536px-1727px)
+        @media (max-width: 1727px) {
+          font-size: 66px; // Matches GP.com at 1536px
+        }
+
+        // Desktop, Desktop Regular, Tablet (768px-1535px)
+        @media (max-width: 1535px) {
+          font-size: 48px; // Matches GP.com at 768px-1280px
+        }
+
+        // Mobile (370px-767px)
+        @media (max-width: 767px) {
+          font-size: 28px; // Matches GP.com at 370px
+          padding-left: 20px; // Add horizontal padding on mobile
+          padding-right: 20px;
         }
       }
     }

@@ -167,3 +167,6 @@ export const StaticScrollRevealTest = (): JSX.Element => {
 };
 
 export default MinimalScrollRevealTest;
+
+
+

@@ -1,0 +1,110 @@
+@import 'src/assets/sass/abstracts/vars';
+
+// Utility/Secondary Navigation (appears above main header)
+// Matching Global Payments - only shows on large desktops (1400px+)
+.utility-nav {
+  background-color: #f8f9fa;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e9ecef;
+  font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  @include respond-to(mobile-large) {
+    padding: 0.5rem $size-padding;
+  }
+
+  .container {
+    max-width: 1440px;
+  }
+
+  .row {
+    justify-content: flex-end;
+  }
+
+  // Hide on mobile, tablet, and small desktop - matching Global Payments
+  @media (width < 1400px) {
+    display: none;
+  }
+
+  // Navigation list
+  .navigation {
+    padding: 0;
+
+    nav > ul {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      @media (width < 992px) {
+        gap: 1rem;
+      }
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    a {
+      color: #0C0C0C;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #2536f0;
+      }
+
+      @media (width < 992px) {
+        font-size: 0.813rem;
+      }
+    }
+
+    .navigation-title a {
+      color: #0C0C0C;
+      font-size: 0.875rem;
+      padding: 0;
+
+      &:hover {
+        color: #2536f0;
+      }
+    }
+  }
+
+  // If using rich text or plain text for links
+  .rich-text,
+  .text {
+    padding: 0;
+
+    a {
+      color: #0C0C0C;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+
+      &:hover {
+        color: #2536f0;
+      }
+    }
+  }
+
+  // Placeholder container
+  .col-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.5rem;
+
+    @media (width < 992px) {
+      gap: 1rem;
+    }
+  }
+}
+
+
+

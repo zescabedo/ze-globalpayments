@@ -8,8 +8,8 @@ import {
   useSitecore,
   Link,
   LinkField,
+  NextImage,
 } from '@sitecore-content-sdk/nextjs';
-import { NextImage } from 'src/lib/image-components';
 import { ScrollRevealText } from 'src/components/NonSitecore/ScrollRevealText';
 
 interface Fields {
@@ -283,24 +283,26 @@ export const LargeScrollingAnimation = (props: HeroProps): JSX.Element => {
     <div className={`component hero large-scrolling-animation bg-white ${sxaStyles}`} id={id}>
       <div className="container">
         <div className="row">
-          <div className="hero-text-block">
-            {isPageEditing ? (
-              <Text field={title} tag="h1" className="hero-heading" />
-            ) : (
-              <h1 className="hero-heading">
-                <ScrollRevealText
-                  startColor="#D3D3D3"
-                  endColor="#2729FF"
-                  direction="left-to-right"
-                  startThreshold={0.9}
-                  endThreshold={0.5}
-                  once={false}
-                  smoothing={0}
-                >
-                  {titleText}
-                </ScrollRevealText>
-              </h1>
-            )}
+          <div className="col-12">
+            <div className="hero-text-block">
+              {isPageEditing ? (
+                <Text field={title} tag="h1" className="hero-heading" />
+              ) : (
+                <h1 className="hero-heading">
+                  <ScrollRevealText
+                    startColor="#D3D3D3"
+                    endColor="#2729FF"
+                    direction="left-to-right"
+                    startThreshold={0.9}
+                    endThreshold={0.5}
+                    once={false}
+                    smoothing={0}
+                  >
+                    {titleText}
+                  </ScrollRevealText>
+                </h1>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -1,23 +1,133 @@
 @import 'src/assets/sass/abstracts/vars';
 
 .eyebrow {
-  color: var(--text-footer);
-  background-color: var(--bg-footer);
+  color: #ffffff;
+  background-color: #2536f0; // Global Payments blue
   width: 100%;
+  padding: 0.75rem 1.5rem; // Added horizontal padding to match header
   transition: 0.4s;
+  // No positioning - follow normal flow
 
-  @include respond-to(mobile-large) {
-    padding: 0 $size-padding;
+  // Progressive padding increases to match header
+  @media (width >= 768px) {
+    padding: 0.75rem 2rem;
+  }
+
+  @media (width >= 1024px) {
+    padding: 0.75rem 2.5rem;
+  }
+
+  @media (width >= 1280px) {
+    padding: 0.75rem 3rem;
+  }
+
+  @media (width >= 1440px) {
+    padding: 0.75rem 4rem;
+  }
+
+  .container {
+    max-width: 1440px;
+    padding: 0; // Remove default container padding
   }
 
   .col-placeholder {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    gap: 2rem;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    @media (width < 768px) {
+      justify-content: center;
+      text-align: center;
+      gap: 0.75rem;
+    }
+  }
+
+  // Eyebrow left content (promotional text)
+  .rich-text,
+  .text {
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    @media (width < 768px) {
+      font-size: 0.813rem;
+      flex: 1 1 100%;
+    }
+
+    @media (width < 576px) {
+      font-size: 0.75rem;
+    }
+  }
+
+  // Eyebrow right content (buttons, close icon)
+  .navigation,
+  .link,
+  .button {
+    padding: 0;
+  }
+
+  // Button styling within eyebrow
+  .button a,
+  .link a,
+  a.button {
+    background-color: #ffffff;
+    color: #2536f0;
+    padding: 0.5rem 1.25rem;
+    border-radius: 1.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(-1px);
+    }
+
+    @media (width < 576px) {
+      font-size: 0.813rem;
+      padding: 0.4rem 1rem;
+    }
+  }
+
+  // Close button styling (if needed)
+  .close-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0 0 0 1rem;
+    margin-left: auto;
+    flex-shrink: 0;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @media (width < 576px) {
+      font-size: 1rem;
+      padding: 0 0 0 0.5rem;
+    }
   }
 }
 
 .site-services .eyebrow .container {
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: none;
 }

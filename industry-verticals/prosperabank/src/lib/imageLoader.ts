@@ -26,3 +26,6 @@ export default function imageLoader({ src, width, quality }: ImageLoaderProps): 
 
   return `${transformedSrc}?${params.join('&')}`;
 }
+
+
+

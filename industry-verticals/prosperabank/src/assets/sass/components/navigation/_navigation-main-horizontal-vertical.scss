@@ -1,9 +1,5 @@
 @import 'src/assets/sass/abstracts/vars';
 @import 'src/assets/sass/abstracts/mixins';
-@import '../../../../../node_modules/font-awesome/scss/mixins';
-@import '../../../../../node_modules/font-awesome/scss/variables';
-
-$borderSize: 2px;
 
 // Drop Down Navigation Common Part
 .navigation.navigation-main {
@@ -21,44 +17,48 @@ $borderSize: 2px;
     &.active {
       > .navigation-title > a:link,
       > .navigation-title > a:visited {
-        color: $text-basic-active;
+        color: #2536f0;
       }
 
       > span {
         display: block;
-        padding: 10px 20px;
-        color: $text-white;
+        padding: 0.75rem 1rem;
+        color: #0C0C0C;
       }
 
       > .navigation-title > a {
-        border-color: $nav-border-root;
+        color: #2536f0;
       }
     }
 
     > .navigation-title > a {
-      border-width: 2px 0 0;
+      border-width: 0;
       border-color: transparent;
+      transition: color 0.3s ease;
 
       &:hover {
-        border-color: $nav-border-root;
+        color: #2536f0;
       }
     }
 
     &.submenu {
       > .navigation-title a {
         position: relative;
-        padding-right: 15px;
+        padding-right: 1.5rem;
 
         &::after {
-          @include fa-icon;
-
-          font-size: 10px;
-          content: $fa-var-chevron-down;
+          content: '▼';
+          font-size: 0.625rem;
           position: absolute;
           transform: translateY(-50%);
           top: 50%;
-          right: 0;
+          right: 0.25rem;
+          transition: transform 0.3s ease;
         }
+      }
+
+      &:hover > .navigation-title a::after {
+        transform: translateY(-50%) rotate(180deg);
       }
     }
 
@@ -69,17 +69,18 @@ $borderSize: 2px;
       z-index: 10;
       position: absolute;
       top: 100%;
-      background: $nav-bg-submenu;
+      background: #ffffff;
       margin-left: 0;
-      margin-top: -$borderSize;
-      border-top: $borderSize solid $nav-border-submenu;
-      border-left: 1px solid $nav-submenu-item-border;
-      border-bottom: 1px solid $nav-submenu-item-border;
+      margin-top: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+      border: none;
+      min-width: 200px;
     }
 
     &:active,
     &:hover {
-      > a {
+      > .navigation-title {
         & + ul {
           display: block !important;
         }
@@ -87,12 +88,14 @@ $borderSize: 2px;
 
       > ul {
         display: block !important;
-        min-width: 60px;
+        min-width: 200px;
       }
     }
 
     &.submenu.active {
-      border-color: $menu-active-color;
+      > .navigation-title > a {
+        color: #2536f0;
+      }
     }
   }
 
@@ -100,18 +103,22 @@ $borderSize: 2px;
     &:hover,
     &:focus {
       transition: background 0.2s ease-in;
-      background: $nav-bg-submenu-active;
+      background: #f8f9fa;
     }
 
-    div > a {
+    div > a,
+    .navigation-title > a {
       display: block;
-      font-weight: normal;
-      font-size: $navigation-font-basic-submenu;
-      text-align: center;
+      font-weight: 400;
+      font-size: 0.938rem;
+      text-align: left;
+      padding: 0.625rem 1.5rem;
+      color: #0C0C0C;
 
       &:hover,
       &:focus {
-        color: $nav-color-submenu;
+        color: #2536f0;
+        background-color: #f8f9fa;
       }
     }
 
@@ -119,7 +126,7 @@ $borderSize: 2px;
       box-sizing: border-box;
 
       &.navigation-image {
-        text-align: center;
+        text-align: left;
 
         > a,
         .field-navigationtext {
@@ -129,74 +136,76 @@ $borderSize: 2px;
     }
   }
 
-  // Additional styles fot drop down horizontal navigation
+  // Additional styles for drop down horizontal navigation
   &.navigation-main-horizontal {
     .submenu > ul {
       padding-left: 0;
+      padding: 0.75rem 0;
     }
 
     .rel-level1 {
       &:active,
       &:hover {
-        > a {
+        > .navigation-title {
           & + ul {
-            display: inline-flex !important;
-            flex-wrap: wrap;
+            display: flex !important;
+            flex-direction: column;
           }
         }
 
         > ul {
-          display: inline-flex !important;
-          flex-wrap: wrap;
+          display: flex !important;
+          flex-direction: column;
         }
       }
 
       > ul {
-        width: 100%;
+        width: auto;
         clear: both;
-        left: 0;
+        left: auto;
+        min-width: 220px;
       }
     }
 
     .rel-level2 {
-      float: left;
-      padding: 10px;
-
-      @include border-basic(right, $nav-submenu-item-border, 1px);
-
-      flex-grow: 1;
-      flex-basis: 23%;
+      float: none;
+      padding: 0;
+      border: none;
+      flex-grow: 0;
+      flex-basis: auto;
     }
   }
 
-  // Additional styles fot drop down vertical navigation
+  // Additional styles for drop down vertical navigation
   &.navigation-main-vertical {
     .rel-level1 > ul {
       padding-left: 0;
+      padding: 0.75rem 0;
       width: auto;
       left: auto;
-
-      @include border-basic(right, $nav-submenu-item-border, 1px);
+      border: none;
 
       > li {
-        padding: 5px 10px;
+        padding: 0;
       }
     }
 
     .submenu {
       ul {
         li {
-          a::before {
-            @include fa-icon;
+          a {
+            padding-left: 2rem;
 
-            content: $fa-var-chevron-right;
-            display: block;
-            position: absolute;
-            left: 0;
-            font-size: 10px;
-            top: 18px;
-            transform: translateY(-50%);
-            padding-left: 7px;
+            &::before {
+              content: '›';
+              display: block;
+              position: absolute;
+              left: 1rem;
+              font-size: 1.25rem;
+              top: 50%;
+              transform: translateY(-50%);
+              color: #2536f0;
+            }
           }
         }
       }

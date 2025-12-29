@@ -16,7 +16,7 @@ export const ParallaxBackgroundImage = (props: ParallaxImageProps): JSX.Element 
     <ParallaxBanner
       layers={[
         {
-          image: `${props.BackgroundImage.value?.src}`,
+          image: `${props.BackgroundImage?.value?.src || ''}`,
           speed: -15,
         },
       ]}

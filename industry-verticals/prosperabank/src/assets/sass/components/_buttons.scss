@@ -49,6 +49,11 @@
     font-size: 16px; // 1.6rem
     line-height: 1.5;
     min-height: auto;
+    
+    @media (max-width: 767px) {
+      padding: 12px 18px; // Slightly smaller on mobile
+      font-size: 15px;
+    }
   }
   
   &.btn-md,
@@ -57,6 +62,11 @@
     font-size: 18px; // 1.8rem - matches Storybook body font size
     line-height: 1.5;
     min-height: auto;
+    
+    @media (max-width: 767px) {
+      padding: 14px 20px; // Adjust for mobile
+      font-size: 16px;
+    }
   }
   
   &.btn-lg {
@@ -64,22 +74,27 @@
     font-size: 20px; // 2.0rem
     line-height: 1.5;
     min-height: auto;
+    
+    @media (max-width: 767px) {
+      padding: 16px 24px; // Adjust for mobile
+      font-size: 18px;
+    }
   }
   
   // Base variant (filled primary button) - matches Storybook .btn-base
   &.btn-base {
-    background-color: #262AFF; // rgb(38, 42, 255)
+    background-color: #2536f0; // Global Payments primary blue
     color: #FFFFFF; // rgb(255, 255, 255)
-    border-color: #262AFF;
+    border-color: #2536f0;
     
     &:hover:not(:disabled) {
-      background-color: #1B1EC6; // rgb(27, 30, 198) - darker blue
-      border-color: #1B1EC6;
+      background-color: #1e2bc4; // Darker blue on hover
+      border-color: #1e2bc4;
     }
     
     &:active:not(:disabled) {
-      background-color: #1517A3; // Even darker for active state
-      border-color: #1517A3;
+      background-color: #1721a8; // Even darker for active state
+      border-color: #1721a8;
     }
   }
   
@@ -114,38 +129,38 @@
   // Secondary variant (outline button)
   &--secondary {
     background-color: transparent;
-    color: #262AFF;
-    border-color: #262AFF;
+    color: #2536f0;
+    border-color: #2536f0;
     
     &:hover:not(:disabled) {
-      background-color: rgba(38, 42, 255, 0.1);
-      border-color: #1B1EC6;
-      color: #1B1EC6;
+      background-color: #2536f0;
+      border-color: #2536f0;
+      color: #ffffff;
     }
     
     &:active:not(:disabled) {
-      background-color: rgba(38, 42, 255, 0.2);
-      border-color: #1517A3;
-      color: #1517A3;
+      background-color: #1e2bc4;
+      border-color: #1e2bc4;
+      color: #ffffff;
     }
   }
   
   // Outline variant
   &.btn-outline {
     background-color: transparent;
-    color: #262AFF;
-    border-color: #262AFF;
+    color: #2536f0;
+    border-color: #2536f0;
     
     &:hover:not(:disabled) {
-      background-color: rgba(38, 42, 255, 0.1);
-      border-color: #1B1EC6;
-      color: #1B1EC6;
+      background-color: #2536f0;
+      border-color: #2536f0;
+      color: #ffffff;
     }
     
     &:active:not(:disabled) {
-      background-color: rgba(38, 42, 255, 0.2);
-      border-color: #1517A3;
-      color: #1517A3;
+      background-color: #1e2bc4;
+      border-color: #1e2bc4;
+      color: #ffffff;
     }
   }
   
@@ -231,19 +246,19 @@
 
 .btn-cta-tertiary {
   background-color: transparent;
-  color: #262AFF;
+  color: #2536f0;
   border-color: transparent;
   
   &:hover:not(:disabled) {
-    background-color: rgba(38, 42, 255, 0.1);
-    color: #1B1EC6;
+    background-color: rgba(37, 54, 240, 0.1);
+    color: #1e2bc4;
   }
 }
 
 // Link button variant
 .btn-link {
   background-color: transparent;
-  color: #262AFF;
+  color: #2536f0;
   border-color: transparent;
   padding: 0;
   text-decoration: underline;
@@ -251,7 +266,7 @@
   border-radius: 0;
   
   &:hover:not(:disabled) {
-    color: #1B1EC6;
+    color: #1e2bc4;
     text-decoration-thickness: 2px;
   }
 }

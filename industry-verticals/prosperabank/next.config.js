@@ -87,7 +87,7 @@ const nextConfig = {
     ],
     // Allow optimization to proceed even if upstream fetch fails
     dangerouslyAllowSVG: true,
-    unoptimized: false,
+    unoptimized: true, // Set to true to bypass Next.js image optimization and use Sitecore's image URLs directly
   },
 
   // async rewrites() {

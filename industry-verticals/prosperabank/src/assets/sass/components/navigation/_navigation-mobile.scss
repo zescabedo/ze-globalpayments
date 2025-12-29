@@ -1,36 +1,103 @@
 @import 'src/assets/sass/abstracts/vars';
 @import 'src/assets/sass/abstracts/mixins';
-@import '../../../../../node_modules/font-awesome/scss/mixins';
-@import '../../../../../node_modules/font-awesome/scss/variables';
 
 .navigation.navigation-mobile {
+  // Mobile navigation up to 1400px (matching Global Payments breakpoint)
+  @media (width < 1400px) {
+    .menu-mobile-navigate-wrapper {
+      position: relative;
+
+      .menu-mobile-navigate {
+        display: none;
+      }
+
+      .menu-humburger {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 1001;
+        position: relative;
+
+        span {
+          width: 1.5rem;
+          height: 0.125rem;
+          background-color: #0C0C0C;
+          transition: all 0.3s ease;
+          border-radius: 2px;
+        }
+      }
+
+      .component-content {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        background-color: #ffffff;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        overflow-y: auto;
+        z-index: 1000;
+        padding: 4rem 1rem 2rem;
+      }
+
+      .menu-mobile-navigate:checked ~ .component-content {
+        right: 0;
+      }
+
+      .menu-mobile-navigate:checked ~ .menu-humburger {
+        span:nth-child(1) {
+          transform: rotate(45deg) translate(0.375rem, 0.375rem);
+        }
+
+        span:nth-child(2) {
+          opacity: 0;
+        }
+
+        span:nth-child(3) {
+          transform: rotate(-45deg) translate(0.375rem, -0.375rem);
+        }
+      }
+    }
+  }
+
   nav > ul {
     border: none;
-
-    @include border-basic;
+    display: flex;
+    flex-direction: column;
   }
 
   .rel-level1 {
     cursor: pointer;
     margin: 0;
-    background: $bg-basic-color;
+    background: #ffffff;
+    border-bottom: 1px solid #e9ecef;
+
+    &:last-child {
+      border-bottom: none;
+    }
 
     > .navigation-title {
-      border-bottom: 1px solid $border-basic-color;
       margin: 0;
-
-      &:last-child {
-        border-bottom: none;
-      }
+      padding: 0;
     }
 
     .navigation-title {
-      padding: 10px;
+      padding: 1rem 0.5rem;
 
       > a {
         text-decoration: none;
-        color: $text-basic;
-        display: inline;
+        color: #0C0C0C;
+        font-weight: 500;
+        font-size: 1rem;
+        display: inline-block;
+
+        &:hover {
+          color: #2536f0;
+        }
       }
     }
   }
@@ -39,39 +106,46 @@
     display: list-item;
 
     .navigation-title > a {
-      font-weight: 500;
+      font-weight: 400;
+      font-size: 0.938rem;
+      padding: 0.75rem 0.5rem;
     }
   }
 
   .submenu {
     > ul {
       display: none;
+      padding-left: 1rem;
+      background: #f8f9fa;
 
       li {
         position: relative;
+        border-bottom: 1px solid #e9ecef;
 
-        a::before {
-          @include fa-icon;
+        &:last-child {
+          border-bottom: none;
+        }
 
-          content: $fa-var-chevron-right;
-          display: block;
-          position: absolute;
-          left: 0;
-          font-size: 10px;
-          top: 20px;
-          transform: translateY(-50%);
+        a {
+          padding-left: 1.5rem;
+
+          &::before {
+            content: '›';
+            display: block;
+            position: absolute;
+            left: 0.5rem;
+            font-size: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #2536f0;
+          }
         }
       }
-
-      padding-left: 25px;
-      background: $nav-bg-submenu;
     }
 
     &.active {
-      > .navigation-title::before {
+      > .navigation-title::after {
         transform: rotate(180deg);
-        transition: 0.6s;
-        transform-style: preserve-3d;
       }
 
       > ul {
@@ -82,19 +156,116 @@
     > .navigation-title {
       position: relative;
 
-      &::before {
-        @include fa-icon;
-
-        content: $fa-var-chevron-down;
+      &::after {
+        content: '▼';
         display: block;
         position: absolute;
-        right: 10px;
-        font-size: 10px;
-        top: 20px;
+        right: 0.75rem;
+        font-size: 0.625rem;
+        top: 50%;
         transform: translateY(-50%);
-        transform: rotate(0);
-        transition: 0.6s;
-        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
+        color: #0C0C0C;
+      }
+    }
+  }
+
+  // Contact Us button in mobile menu
+  li.button-nav-item,
+  .button-nav-item {
+    margin-top: 1rem;
+    padding: 1rem 0.5rem;
+    border-bottom: none !important;
+
+    .navigation-title a,
+    > a {
+      background-color: #2536f0 !important;
+      color: #ffffff !important;
+      padding: 0.75rem 1.5rem !important;
+      border-radius: 2rem !important;
+      font-weight: 600 !important;
+      font-size: 1rem !important;
+      text-decoration: none !important;
+      display: inline-block !important;
+      text-align: center !important;
+      width: 100% !important;
+      border: 2px solid #2536f0 !important;
+
+      &:hover {
+        background-color: #1e2bc4 !important;
+        border-color: #1e2bc4 !important;
+      }
+    }
+  }
+
+  // Ensure button styling on mobile for all nav levels
+  .rel-level1.button-nav-item {
+    > .navigation-title > a {
+      background-color: #2536f0 !important;
+      color: #ffffff !important;
+      padding: 0.75rem 1.5rem !important;
+      border-radius: 2rem !important;
+      font-weight: 600 !important;
+      font-size: 1rem !important;
+      text-decoration: none !important;
+      display: inline-block !important;
+      text-align: center !important;
+      width: 100% !important;
+      border: 2px solid #2536f0 !important;
+    }
+  }
+}
+
+// Large desktop navigation (1400px+) - hide mobile menu, show horizontal nav
+@media (width >= 1400px) {
+  .navigation {
+    .menu-mobile-navigate-wrapper {
+      .menu-humburger {
+        display: none !important;
+      }
+
+      .menu-mobile-navigate {
+        display: none !important;
+      }
+
+      .component-content {
+        position: static !important;
+        width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        overflow-y: visible !important;
+        right: auto !important;
+      }
+    }
+
+    nav > ul {
+      flex-direction: row !important;
+      align-items: center !important;
+    }
+  }
+}
+
+// Tablet and small desktop (768px - 1399px) - Contact us button visible outside mobile menu
+@media (width >= 768px) and (width < 1400px) {
+  .navigation {
+    .menu-mobile-navigate-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+
+      // Contact us button appears inline with hamburger
+      li.button-nav-item,
+      .button-nav-item {
+        position: static !important;
+        order: 1;
+        margin-right: 1rem;
+      }
+
+      .menu-humburger {
+        order: 2;
       }
     }
   }

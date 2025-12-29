@@ -3,83 +3,1155 @@
 .header {
   font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 100%;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  background-color: #ffffff;
+  padding: 1rem 1.5rem; // Added horizontal padding for all sizes
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  // No positioning - follow normal flow
 
-  @include respond-to(mobile-large) {
-    padding: 1.5rem $size-padding;
+  // Responsive padding adjustments
+  @media (width >= 768px) {
+    padding: 1rem 2rem; // More padding on tablet
+  }
+
+  @media (width >= 1024px) {
+    padding: 1rem 2.5rem; // Even more on small desktop
+  }
+
+  @media (width >= 1280px) {
+    padding: 1rem 3rem; // More on medium desktop
+  }
+
+  @media (width >= 1440px) {
+    padding: 1rem 4rem; // Maximum padding on large screens
+  }
+
+  .container {
+    max-width: 100%; // Full width to match Global Payments approach
+    padding: 0; // Remove default container padding since we handle it above
+  }
+
+  .row {
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    margin-left: 0; // Remove Bootstrap's negative margin
+    margin-right: 0; // Remove Bootstrap's negative margin
+    overflow: visible; // Allow hamburger to be visible
+    
+    // At 1024px, ensure row doesn't constrain navigation scrolling
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      overflow-x: visible; // Allow navigation wrapper to scroll
+      overflow-y: visible;
+    }
+  }
+
+  // Logo container
+  .col-auto {
+    flex: 0 0 auto;
+    padding-right: 0;
+    padding-left: 0; // Remove Bootstrap's default col padding to align with hero
+    
+    // On mobile/tablet/small desktop, logo doesn't need to push right
+    @media (width < 1400px) {
+      margin-right: 0;
+    }
+
+    // On large desktop, logo pushes navigation to center
+    @media (width >= 1400px) {
+      margin-right: auto;
+    }
+  }
+
+  // Navigation container
+  .col {
+    flex: 1 1 auto; // Allow flex growth/shrink
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; // Push hamburger to right
+    padding-left: 0; // Remove Bootstrap's default col padding
+    padding-right: 0; // Remove Bootstrap's default col padding
+    min-width: 0; // Allow shrinking below content size
+    overflow: visible; // Ensure hamburger menu is visible
+
+    // At 1024px, allow overflow for horizontal scrolling
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      overflow-x: visible;
+      overflow-y: visible;
+      min-width: 0; // Allow shrinking for scroll
+    }
+
+    // On large desktop, center navigation
+    @media (width >= 1400px) {
+      justify-content: center;
+    }
   }
 
   .rich-text,
   .navigation {
     padding: 0 !important;
   }
-  
-  h1 {
+
+  // Logo styling - for text logo
+  .col-auto .rich-text h1,
+  .col-auto h1 {
     font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #0C0C0C; // Storybook text color
+    color: #2536f0; // Global Payments blue
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+
+    @media (width < 992px) {
+      font-size: 1.5rem;
+    }
+
+    @media (width < 576px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  // Logo image styling - matches Global Payments logo size
+  .col-auto img,
+  .col-auto .image-component img {
+    max-height: 32px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+
+    @media (width < 768px) {
+      max-height: 28px;
+    }
+
+    @media (width < 576px) {
+      max-height: 24px;
+    }
+  }
+
+  // Ensure image container doesn't add extra spacing
+  .col-auto .image-component {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+
+  // Search icon styling (if added to navigation)
+  .search-icon {
+    cursor: pointer;
+    margin-left: 1.5rem;
+    color: #0C0C0C;
+    font-size: 1.25rem;
+
+    &:hover {
+      color: #2536f0;
+    }
   }
 }
 
-// PLAY! finance specific styles
-.site-financial .header {
-  h1 {
-    font-size: 2rem !important;
-    line-height: 1 !important;
-    padding: 0 !important;
-    margin: 0 !important;
+// Utility/Secondary nav above main header (if needed)
+.utility-nav {
+  background-color: #f8f9fa;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e9ecef;
+
+  .container {
+    max-width: 1440px;
+  }
+
+  ul {
     display: flex;
-    text-align: left;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-    @media (width < 1200px) {
-      flex-direction: column;
-    }
+  li {
+    margin: 0;
+  }
 
-    @include respond-to(mobile-large) {
-      flex-direction: row;
-    }
+  a {
+    color: #0C0C0C;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
 
-    .play {
-      display: flex;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #255be3;
-
-      svg {
-        width: 1rem;
-      }
-
-      .dark & {
-        color: #fff;
-      }
-    }
-
-    .finance {
-      color: var(--bg-accent);
-      font-weight: 300;
+    &:hover {
+      color: #2536f0;
     }
   }
 }
 
-// PLAY! services specific styles
+// Global Payments specific styles
+.site-financial .header,
 .site-services .header {
   h1 {
     font-size: 1.5rem !important;
-    line-height: 1 !important;
+    line-height: 1.2 !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex;
     align-items: center;
     text-align: left;
 
-    svg {
-      width: 2.5rem;
-      margin-right: 1rem;
+    @media (width < 992px) {
+      font-size: 1.25rem !important;
     }
 
-    .services {
-      color: var(--text-accent);
-      font-weight: normal;
+    .play,
+    .global,
+    .payments {
+      display: inline-flex;
+      font-weight: 600;
     }
+
+    .global {
+      color: #2536f0;
+    }
+
+    .payments {
+      color: #0C0C0C;
+      font-weight: 400;
+    }
+
+    svg {
+      width: auto;
+      height: 1.5rem;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+// =============================================================================
+// Global Payments Header Component Styles (header-gp__ classes)
+// =============================================================================
+
+.header {
+  // Main Header Container
+  .header-gp__main {
+    padding: 1rem 0;
+
+    @media (min-width: 768px) {
+      padding: 1.25rem 0;
+    }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+
+      @media (min-width: 768px) {
+        padding: 0 2rem;
+      }
+
+      @media (min-width: 1024px) {
+        padding: 0 2.5rem;
+      }
+    }
+  }
+
+  .header-gp__main-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: nowrap;
+    position: relative;
+  }
+
+  // Logo
+  .header-gp__logo {
+    flex-shrink: 0;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .header-gp__logo-link {
+    display: inline-block;
+    line-height: 0;
+    text-decoration: none;
+  }
+
+  .header-gp__logo-image {
+    height: auto;
+    max-width: 100%;
+    width: auto;
+    max-height: 36px;
+
+    @media (max-width: 767px) {
+      max-width: 180px;
+      max-height: 32px;
+    }
+  }
+
+  // Desktop Navigation - Centered
+  .header-gp__nav {
+    display: none;
+    flex: 1;
+    justify-content: center;
+
+    @media (min-width: 1024px) {
+      display: flex;
+    }
+  }
+
+  .header-gp__nav-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: row;
+  }
+
+  .header-gp__nav-item {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &.has-dropdown {
+      // Ensure dropdown is positioned relative to nav item
+    }
+  }
+
+
+  .header-gp__nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    &:hover {
+      color: #2536f0;
+    }
+  }
+
+  .header-gp__nav-dropdown-icon {
+    font-size: 0.6rem;
+    color: #2536f0;
+    margin-left: 0.25rem;
+    transition: transform 0.2s ease;
+  }
+
+  .header-gp__nav-item.has-dropdown.is-active .header-gp__nav-dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  // Dropdown menu
+  .header-gp__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    min-width: 200px;
+    list-style: none;
+    margin: 0;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    margin-top: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .header-gp__nav-item.has-dropdown.is-active .header-gp__dropdown {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .header-gp__dropdown .header-gp__nav-item {
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .header-gp__dropdown .header-gp__nav-link {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: #000000;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: #f8f9fa;
+      color: #2536f0;
+    }
+  }
+
+  // Hide dropdown icon in nested dropdowns
+  .header-gp__dropdown .header-gp__nav-dropdown-icon {
+    display: none;
+  }
+
+  // Navigation component styles when inside Header placeholder
+  // Make it horizontal and hide dropdowns by default, show on hover
+  .header-gp__nav-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 0; // Allow shrinking for scroll
+    position: relative;
+    max-width: 100%; // Prevent expanding beyond container
+
+    // At 1024px, add horizontal scroll if items don't fit
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      overflow-x: auto !important; // Force scroll
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #2536f0 transparent;
+      justify-content: flex-start; // Start alignment for scrolling
+      max-width: 100%; // Constrain to container width
+      
+      // Custom scrollbar styling for webkit browsers
+      &::-webkit-scrollbar {
+        height: 4px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background-color: #2536f0;
+        border-radius: 2px;
+      }
+      
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: #1a28c7;
+      }
+    }
+
+    .navigation {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: center;
+      
+      // At 1024px, navigation fills wrapper but allows children to overflow
+      @media (min-width: 1024px) and (max-width: 1279px) {
+        width: 100% !important; // Fill the scroll container
+        min-width: 0; // Allow shrinking
+        justify-content: flex-start; // Align items to start for scrolling
+        overflow: visible; // Allow children to overflow beyond this element
+      }
+
+      // Override Navigation component's default list styles
+      .component-content,
+      > nav,
+      nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        
+        // At 1024px, allow these to expand for scrolling
+        @media (min-width: 1024px) and (max-width: 1279px) {
+          width: max-content !important; // Allow content to determine width
+          min-width: 100%; // But at least fill container
+          justify-content: flex-start !important;
+          overflow: visible; // Allow overflow
+        }
+      }
+
+      // Override Navigation component's media queries that hide items
+      // Always show navigation items when inside Header (at desktop sizes)
+      @media (min-width: 1024px) {
+        // CRITICAL: Override Navigation component's rule that hides items at 768px-1399px
+        .level0:not(.button-nav-item),
+        .level1:not(.button-nav-item),
+        .rel-level1:not(.button-nav-item) {
+          display: list-item !important;
+        }
+
+        .level0,
+        .level1,
+        .rel-level1 {
+          display: list-item !important;
+        }
+
+        .button-nav-item {
+          display: list-item !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+
+        // Ensure nav content is visible (override Navigation component's display rules)
+        .component-content {
+          display: block !important;
+          position: static !important; // Override fixed positioning from Navigation component
+          width: 100% !important;
+          height: auto !important;
+          background: transparent !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          overflow: visible !important;
+        }
+
+        .component-content > nav {
+          display: flex !important;
+          position: relative !important;
+        }
+      }
+      
+      // At 1024px, ensure navigation items are displayed like at 1280px
+      // Allow items to determine their own width for scrolling
+      @media (min-width: 1024px) and (max-width: 1279px) {
+        // CRITICAL: Override Navigation component's rule that hides items at 768px-1399px
+        // Must be more specific than Navigation component's rule
+        .menu-mobile-navigate-wrapper .component-content {
+          display: block !important;
+          position: static !important;
+          width: max-content !important;
+          min-width: 100%;
+          overflow: visible !important;
+          background: transparent !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          height: auto !important;
+        }
+        
+        .menu-mobile-navigate-wrapper .component-content > nav {
+          display: flex !important;
+          position: relative !important;
+          width: max-content !important;
+          justify-content: flex-start !important;
+        }
+        
+        // Override Navigation component's hiding rules at this breakpoint
+        .level0:not(.button-nav-item),
+        .level1:not(.button-nav-item),
+        .rel-level1:not(.button-nav-item) {
+          display: list-item !important; // Force show items - override Navigation component
+        }
+        
+        // Also ensure all level items are shown
+        .level0,
+        .level1,
+        .rel-level1 {
+          display: list-item !important;
+        }
+        
+        .component-content {
+          display: block !important;
+          position: static !important;
+          width: max-content !important;
+          min-width: 100%;
+          overflow: visible !important;
+        }
+        
+        .component-content > nav {
+          justify-content: flex-start !important; // Start alignment for scroll
+          width: max-content !important; // Allow content to determine width
+          position: relative !important;
+        }
+        
+        .component-content > nav > ul,
+        nav > ul,
+        > nav > ul,
+        ul {
+          width: max-content !important; // Allow content to determine width
+          justify-content: flex-start !important; // Start alignment
+          flex-wrap: nowrap !important; // Prevent wrapping
+          display: flex !important; // Ensure flex display
+        }
+      }
+
+      // When Navigation is in Header, show the content but hide the mobile hamburger
+      // The wrapper needs to be visible but styled as a regular div, not a label
+      .menu-mobile-navigate-wrapper {
+        display: block !important;
+        position: relative;
+        width: 100% !important;
+        
+        // At 1024px, ensure wrapper allows scrolling
+        @media (min-width: 1024px) and (max-width: 1279px) {
+          width: 100% !important;
+          overflow: visible !important;
+          display: block !important;
+        }
+        
+        // Hide the checkbox input
+        > input[type="checkbox"].menu-mobile-navigate {
+          display: none !important;
+        }
+      }
+
+      // Hide only the hamburger icon
+      .menu-humburger {
+        display: none !important;
+      }
+      
+      // Ensure the component-content inside the wrapper is visible
+      .menu-mobile-navigate-wrapper > .component-content {
+        display: block !important;
+        width: 100%;
+        
+        // At 1024px, override Navigation component's flex display and show all items
+        @media (min-width: 1024px) and (max-width: 1279px) {
+          display: block !important; // Override Navigation component's flex at 768px-1399px
+          width: max-content !important; // Allow content to determine width
+          min-width: 100%; // But at least fill the container
+          overflow: visible !important; // Allow overflow
+          position: static !important; // Override any fixed positioning
+          background: transparent !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          height: auto !important;
+        }
+        
+        > nav {
+          display: flex !important;
+          width: 100%;
+          justify-content: center;
+          
+          // At 1024px, allow nav to expand for scrolling
+          @media (min-width: 1024px) and (max-width: 1279px) {
+            display: flex !important;
+            width: max-content !important; // Allow content to determine width
+            min-width: 100%;
+            justify-content: flex-start !important;
+            overflow: visible !important; // Allow overflow
+            position: relative !important;
+          }
+        }
+        
+        // At 1024px, ensure nav ul shows all items and allows scrolling
+        > nav > ul {
+          @media (min-width: 1024px) and (max-width: 1279px) {
+            display: flex !important;
+            flex-direction: row !important;
+            width: max-content !important;
+            justify-content: flex-start !important;
+            flex-wrap: nowrap !important;
+            gap: 2rem !important;
+          }
+        }
+      }
+      
+      // Also handle the case where Navigation shows "[Navigation]" placeholder text
+      // (when fields are empty - this happens when component is dropped without datasource)
+      > .component-content {
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        color: #000000;
+      }
+
+      // Override Navigation component's position classes
+      // The position-right class sets text-align: right, but we want center alignment
+      &.position-right {
+        text-align: center !important;
+
+        .component-content,
+        nav,
+        ul,
+        li,
+        .navigation-title,
+        a {
+          text-align: center !important;
+        }
+
+        .rel-level1 > .navigation-title > a {
+          text-align: center !important;
+        }
+      }
+
+      &.navigation-horizontal {
+        // Ensure horizontal layout
+      }
+
+      // Show regular navigation structure - force horizontal layout
+      .component-content {
+        display: block !important;
+        width: 100%;
+
+        // At 1024px, allow component-content to expand for scrolling
+        @media (min-width: 1024px) and (max-width: 1279px) {
+          width: max-content !important; // Allow content to determine width
+          min-width: 100%; // But at least fill the container
+          overflow: visible; // Allow overflow
+        }
+
+        > nav {
+          display: flex !important;
+          width: 100%;
+          justify-content: center;
+          position: relative;
+          
+          // At 1024px, allow nav to expand for scrolling
+          @media (min-width: 1024px) and (max-width: 1279px) {
+            width: max-content !important; // Allow content to determine width
+            min-width: 100%;
+            justify-content: flex-start !important;
+            overflow: visible; // Allow overflow
+          }
+        }
+      }
+
+      .component-content > nav > ul,
+      nav > ul,
+      > nav > ul,
+      ul {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex-wrap: nowrap;
+        width: 100%;
+        text-align: center;
+        
+        // At 1024px, allow list to be wider for scrolling
+        @media (min-width: 1024px) and (max-width: 1279px) {
+          width: max-content !important; // Critical: allow list to expand beyond container
+          min-width: 100%; // But at least fill container
+          justify-content: flex-start !important;
+          flex-shrink: 0; // Prevent shrinking
+        }
+      }
+
+      // Ensure navigation items are positioned relative for dropdowns
+      .rel-level1,
+      li.rel-level1 {
+        position: relative;
+        float: none !important;
+        display: list-item;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        white-space: nowrap; // Prevent text wrapping at 1024px
+        flex-shrink: 0; // Prevent items from shrinking at 1024px
+
+        // Navigation title/link styling
+        > .navigation-title {
+          margin: 0;
+          padding: 0;
+
+          > a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #000000;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            transition: color 0.2s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            border: none;
+            background: transparent;
+
+            &:hover {
+              color: #2536f0;
+            }
+          }
+        }
+
+        // Hide dropdowns by default
+        > ul,
+        > .navigation-title + ul,
+        ul.clearfix {
+          display: none !important;
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: #ffffff;
+          border: 1px solid #e9ecef;
+          border-radius: 4px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          padding: 0.5rem 0;
+          min-width: 200px;
+          list-style: none;
+          margin: 0;
+          margin-top: 0.5rem;
+          z-index: 1000;
+          white-space: nowrap;
+          flex-direction: column !important;
+          gap: 0;
+        }
+
+        // Show dropdowns on hover
+        &:hover,
+        &:active,
+        &:focus-within {
+          > ul,
+          > .navigation-title + ul,
+          ul.clearfix {
+            display: block !important;
+          }
+        }
+
+        // Dropdown arrow indicator
+        &.submenu {
+          > .navigation-title > a::after {
+            content: '▼';
+            font-size: 0.6rem;
+            margin-left: 0.25rem;
+            color: #2536f0;
+            transition: transform 0.2s ease;
+          }
+
+          &:hover > .navigation-title > a::after {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      // Second level navigation items (dropdown items)
+      .rel-level2,
+      li.rel-level2 {
+        float: none !important;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        width: 100%;
+        display: list-item;
+
+        .navigation-title > a,
+        > a,
+        > .navigation-title > a {
+          display: block;
+          padding: 0.75rem 1.5rem;
+          color: #000000;
+          font-size: 0.9375rem;
+          white-space: nowrap;
+          text-decoration: none;
+          transition: background-color 0.2s ease, color 0.2s ease;
+          border: none;
+          background: transparent;
+
+          &:hover {
+            background-color: #f8f9fa;
+            color: #2536f0;
+          }
+        }
+      }
+
+      // Ensure parent list items don't show nested dropdowns by default
+      .rel-level1 > ul .rel-level1 > ul {
+        display: none !important;
+      }
+
+      .rel-level1 > ul .rel-level1:hover > ul {
+        display: block !important;
+      }
+
+      // Remove any button styling from navigation items
+      .button-nav-item {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+
+        > .navigation-title > a {
+          background-color: transparent !important;
+          border: none !important;
+          color: #000000 !important;
+          padding: 0.5rem 0 !important;
+          border-radius: 0 !important;
+          font-weight: 400 !important;
+
+          &:hover {
+            background-color: transparent !important;
+            color: #2536f0 !important;
+          }
+        }
+      }
+    }
+  }
+
+  // Right Actions (Search, Contact, Mobile Toggle)
+  .header-gp__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1001;
+    flex-shrink: 0;
+
+    @media (min-width: 768px) {
+      gap: 1.5rem;
+    }
+  }
+
+  .header-gp__search-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #000000;
+    transition: color 0.2s ease;
+    line-height: 0;
+
+    &:hover {
+      color: #2536f0;
+    }
+
+    @media (min-width: 1024px) {
+      display: block;
+    }
+
+    svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+    }
+  }
+
+  .header-gp__contact-button {
+    display: none;
+    padding: 0.625rem 1.5rem;
+    background-color: #2536f0;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    line-height: 1.5;
+    font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    &:hover {
+      background-color: #1e2bc4;
+      color: #ffffff;
+    }
+
+    @media (min-width: 1024px) {
+      display: inline-block;
+    }
+  }
+
+  .header-gp__mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1001;
+
+    @media (min-width: 1024px) {
+      display: none;
+    }
+
+    &.is-active {
+      .header-gp__hamburger-line {
+        &:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+      }
+    }
+  }
+
+  .header-gp__hamburger-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #2536f0;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+  }
+
+  // Search Overlay
+  .header-gp__search-overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e9ecef;
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    animation: slideDown 0.3s ease;
+    z-index: 999;
+  }
+
+  .header-gp__search-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .header-gp__search-input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid #e9ecef;
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+      border-color: #2536f0;
+    }
+  }
+
+  .header-gp__search-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #495057;
+    transition: color 0.2s ease;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: #000000;
+    }
+  }
+
+  // Mobile Menu
+  .header-gp__mobile-menu {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    overflow-y: auto;
+    animation: slideDown 0.3s ease;
+    z-index: 999;
+
+    @media (min-width: 768px) {
+      top: 85px;
+    }
+
+    @media (min-width: 1024px) {
+      display: none;
+    }
+  }
+
+  .header-gp__mobile-nav {
+    padding: 2rem 0;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .header-gp__mobile-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-gp__mobile-item {
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .header-gp__mobile-link {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: #000000;
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #2536f0;
+    }
+  }
+
+  .header-gp__mobile-sublist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+  }
+
+  .header-gp__mobile-subitem {
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .header-gp__mobile-sublink {
+    display: block;
+    padding: 0.75rem 1.5rem 0.75rem 3rem;
+    color: #000000;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #2536f0;
+    }
+  }
+}
+
+// Update base header styles for Global Payments design
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 0;
+}
+
+// Animation for slide down
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

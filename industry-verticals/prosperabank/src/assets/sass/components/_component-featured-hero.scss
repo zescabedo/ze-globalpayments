@@ -126,32 +126,34 @@
   text-align: center;
   margin: 0 auto;
   
-  // Hero Heading - larger, thicker, wider to match GlobalPay website
+  // Hero Heading - matches GlobalPayments.com exactly at all breakpoints
   .hero-heading {
     font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 80px; // Increased from default - larger
-    font-weight: 900; // Maximum weight - thicker
-    line-height: 88px; // Increased proportionally
-    letter-spacing: -0.02em; // Slightly tighter for better appearance at large size
-    color: rgb(12, 12, 12); // #0C0C0C
+    font-size: 70px; // Desktop XL (1728px+) - Matches GlobalPayments.com
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: normal;
+    color: rgb(0, 0, 0); // #000000 - pure black
     margin: 0;
+    margin-bottom: 0;
+    padding-bottom: 16px; // Consistent across all breakpoints
     text-align: center;
     
-    // 50% wider on large devices only - increase letter spacing to spread text horizontally
-    @media (min-width: 1200px) {
-      letter-spacing: 0.05em; // Increased letter-spacing to make text 50% wider horizontally
+    // Desktop Large (1536px-1727px)
+    @media (max-width: 1727px) {
+      font-size: 66px; // Matches GP.com at 1536px
     }
     
-    @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
-      font-size: 60px; // Responsive for tablet
-      line-height: 68px;
-      letter-spacing: -0.02em;
+    // Desktop, Desktop Regular, Tablet (768px-1535px)
+    @media (max-width: 1535px) {
+      font-size: 48px; // Matches GP.com at 768px-1280px
     }
     
-    @media (max-width: 768px) {
-      font-size: 44px; // Mobile
-      line-height: 52px;
-      letter-spacing: -0.01em;
+    // Mobile (370px-767px)
+    @media (max-width: 767px) {
+      font-size: 28px; // Matches GP.com at 370px
+      padding-left: 20px; // Add horizontal padding on mobile
+      padding-right: 20px;
     }
   }
   
@@ -206,10 +208,24 @@
     justify-content: center;
     gap: var(--gpn-spacing-sm-desktop, #{$gpn-spacing-sm-desktop});
     margin-top: var(--gpn-spacing-lg-desktop, #{$gpn-spacing-lg-desktop});
+    margin-bottom: 64px; // Increased space before images to prevent overlap (matches GP.com)
     
     @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
       gap: var(--gpn-spacing-sm-mobile, #{$gpn-spacing-sm-mobile});
       margin-top: var(--gpn-spacing-lg-mobile, #{$gpn-spacing-lg-mobile});
+      margin-bottom: 48px; // Tablet spacing, prevents overlap
+    }
+    
+    @media (max-width: 767px) {
+      flex-direction: column; // Stack buttons vertically on mobile
+      align-items: center; // Center buttons on mobile
+      margin-bottom: 40px; // Mobile spacing, prevents overlap
+      width: 100%; // Container is full width
+      
+      .link-inner {
+        width: auto; // Button wrapper fits content
+        max-width: none; // No max width restriction
+      }
     }
     
     &.all {
@@ -225,15 +241,15 @@
 // Hero Media Block
 .hero-media-block {
   position: relative;
-  z-index: 2;
-  margin-top: var(--gpn-spacing-xl-desktop, #{$gpn-spacing-xl-desktop});
+  z-index: 1; // Lower z-index than text/button to prevent overlap
+  margin-top: 0; // Remove top margin, spacing controlled by .cta-list margin-bottom
   width: 100%;
   max-width: 100%;
   display: flex;
   justify-content: center;
   
   @media (max-width: #{$gpn-breakpoint-tablet - 1px}) {
-    margin-top: var(--gpn-spacing-lg-mobile, #{$gpn-spacing-lg-mobile});
+    margin-top: 0; // Spacing controlled by .cta-list margin-bottom
   }
   
   &.square-corners {
@@ -319,15 +335,41 @@
         color 0.2s ease-in-out;
       border: 2px solid transparent;
       cursor: pointer;
+      white-space: nowrap; // Prevent text wrapping on mobile
+      min-width: 160px; // Minimum button width
 
       &:focus {
         outline: 2px solid var(--gpn-theme-blue-500, #{$gpn-blue-500});
         outline-offset: 2px;
       }
+      
+      // Tablet adjustments (768px - 1023px only, exclude mobile)
+      @media (min-width: 768px) and (max-width: 1023px) {
+        padding: 14px 20px;
+        font-size: 16px;
+      }
+      
+      // Mobile adjustments - match GlobalPayments.com (below 768px)
+      @media (max-width: 767px) {
+        padding: 15px 32px !important; // Match GP.com padding - use !important to override any conflicts
+        font-size: 16px;
+        width: auto; // Auto width - fits content like GP.com
+        max-width: none; // No max width restriction
+        min-width: auto; // No min width restriction
+        justify-content: center; // Center text
+      }
     }
 
     .link-inner {
       display: inline-block;
+      
+      @media (max-width: 767px) {
+        width: auto; // Auto width - fits content on mobile like GP.com
+        
+        .btn {
+          width: auto; // Button fits content like GP.com
+        }
+      }
     }
 
     .btn-cta-primary {
@@ -373,15 +415,37 @@
   }
   
   .hero-media-block {
-    margin-top: var(--gpn-spacing-lg-mobile, #{$gpn-spacing-lg-mobile});
+    margin-top: 0; // Spacing controlled by .cta-list margin-bottom
   }
   
-  .cta-list {
-    flex-direction: column;
-    
-    .btn {
-      width: 100%;
-      text-align: center;
+  .component.featured-hero-video,
+  .component.bg-white {
+    .cta-list {
+      flex-direction: column;
+      align-items: center;
+      
+      .btn {
+        width: 100%;
+        max-width: 400px; // Reasonable max width on tablet
+        text-align: center;
+      }
+    }
+  }
+}
+
+// Mobile-specific adjustments
+@media (max-width: 767px) {
+  .hero-media-block {
+    margin-top: 0; // No top margin, spacing controlled by button margin-bottom
+  }
+  
+  .component.featured-hero-video,
+  .component.bg-white {
+    .cta-list {
+      .btn {
+        max-width: none; // No max width - button fits content
+        width: auto; // Auto width - fits content like GP.com
+      }
     }
   }
 }
