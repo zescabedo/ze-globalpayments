@@ -4,40 +4,57 @@
   font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 100%;
   background-color: #ffffff;
-  padding: 1rem 1.5rem; // Added horizontal padding for all sizes
+  padding: 0; // Matching Global Payments exactly - no padding on header itself
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  // Ensure header appears after eyebrow on all screen sizes
+  order: 2;
+  // Increase height by 100% (double the current height) and vertically center content
+  min-height: 72px; // Base height doubled from typical 36px
+  display: flex;
+  align-items: center; // Vertically center align everything
   // No positioning - follow normal flow
 
-  // Responsive padding adjustments
-  @media (width >= 768px) {
-    padding: 1rem 2rem; // More padding on tablet
-  }
-
-  @media (width >= 1024px) {
-    padding: 1rem 2.5rem; // Even more on small desktop
-  }
-
-  @media (width >= 1280px) {
-    padding: 1rem 3rem; // More on medium desktop
-  }
-
-  @media (width >= 1440px) {
-    padding: 1rem 4rem; // Maximum padding on large screens
-  }
-
-  .container {
-    max-width: 1344px; // Matching Global Payments exactly
+  // Container styles - matching Global Payments exactly
+  // Must be more specific than _component-container.scss which sets padding: 0
+  // Also override .component padding which sets padding: 0 $size-padding (8px)
+  // Use .header > .container to increase specificity
+  > .container,
+  > .container-fluid,
+  > [class*="container-"] {
+    max-width: 1344px !important; // Matching Global Payments exactly
     margin: 0 auto;
-    padding: 0 12px; // Matching Global Payments exactly
+    padding-left: 12px !important; // Matching Global Payments exactly - override _component-container.scss and .component padding
+    padding-right: 12px !important; // Matching Global Payments exactly - override _component-container.scss and .component padding
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  // Also target container with multiple classes (e.g., container container-undefined-fluid)
+  > [class*="container"][class*="container"] {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+// Override .component padding for header container specifically
+// .component sets padding: 0 $size-padding (8px), but header container should have 12px
+.component.header {
+  > .container,
+  > .container-fluid,
+  > [class*="container-"] {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
   }
 
   .row {
-    align-items: center;
+    align-items: center; // Vertically center all row items
     justify-content: space-between;
     flex-wrap: nowrap;
     margin-left: 0; // Remove Bootstrap's negative margin
     margin-right: 0; // Remove Bootstrap's negative margin
     overflow: visible; // Allow hamburger to be visible
+    width: 100%; // Ensure row takes full width
+    height: 100%; // Ensure row takes full height for vertical centering
     
     // At 1024px, ensure row doesn't constrain navigation scrolling
     @media (min-width: 1024px) and (max-width: 1279px) {
@@ -781,7 +798,7 @@
         white-space: nowrap; // Prevent text wrapping at 1024px
         flex-shrink: 0; // Prevent items from shrinking at 1024px
 
-        // Navigation title/link styling
+        // Navigation title/link styling - matching Global Payments exactly
         > .navigation-title {
           margin: 0;
           padding: 0;
@@ -790,20 +807,27 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #000000;
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 1rem;
-            padding: 0.5rem 0;
+            color: #000000 !important;
+            text-decoration: none !important;
+            font-weight: 400 !important; // Matching Global Payments exactly - must override base styles
+            font-size: 16px !important; // Matching Global Payments exactly (16px, not 1rem)
+            padding: 5px 16px !important; // Matching Global Payments exactly (5px vertical, 16px horizontal)
+            padding-top: 5px !important;
+            padding-bottom: 5px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+            line-height: 24px !important; // Matching Global Payments exactly
             transition: color 0.2s ease;
             cursor: pointer;
             white-space: nowrap;
-            font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            border: none;
-            background: transparent;
+            font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+            border: none !important;
+            background: transparent !important;
+            margin: 0 !important;
 
             &:hover {
-              color: #2536f0;
+              color: #2536f0 !important;
+              text-decoration: none !important;
             }
           }
         }

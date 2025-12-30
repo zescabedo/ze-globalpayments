@@ -92,8 +92,11 @@ ul li {
 #header, #content, #footer, .sc-jss-empty-placeholder {
   width: 100%;
   display: flex;
+  flex-direction: column !important; // Force column (not column-reverse) to ensure order property works correctly
   flex-wrap: wrap;
   position: relative;
+  // Order property on children (eyebrow: order: 1, header: order: 2) ensures correct visual order
+  // Must use !important to override any Sitecore-generated column-reverse styles
 }
 
 .sc-jss-placeholder-error {

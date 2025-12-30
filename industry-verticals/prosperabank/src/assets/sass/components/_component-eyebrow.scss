@@ -6,6 +6,10 @@
   width: 100%;
   padding: 0.75rem 1.5rem; // Added horizontal padding to match header
   transition: 0.4s;
+  // Ensure eyebrow appears first (before header) on all screen sizes
+  order: 1;
+  position: relative; // Ensure it can have z-index
+  z-index: 1001; // Higher than header's z-index: 1000 to appear above sticky header
   // No positioning - follow normal flow
 
   // Progressive padding increases to match header
