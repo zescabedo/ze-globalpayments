@@ -50,7 +50,12 @@ const getAllArticlesPageHref = (items: ArticleListItemProps[]) => {
 const ArticleListDefault = (props: ArticleListComponentProps): JSX.Element => {
   const id = props.params?.RenderingIdentifier;
   const newsItems = getNewsItems(props.fields?.items, parseInt(props.params?.NumberOfItems));
-  const { t } = useI18n();
+
+  // Group items into sets of 4 (1 featured + 3 smaller)
+  const groupedItems: ArticleListItemProps[][] = [];
+  for (let i = 0; i < newsItems.length; i += 4) {
+    groupedItems.push(newsItems.slice(i, i + 4));
+  }
 
   return (
     <div
@@ -58,36 +63,72 @@ const ArticleListDefault = (props: ArticleListComponentProps): JSX.Element => {
       id={id ? id : undefined}
     >
       <div className="container">
-        <div className="background p-3 p-sm-5">
-          {newsItems?.map((item, i) => (
-            <React.Fragment key={item.url}>
-              <div
-                className={`row gx-5 row-gap-3 align-items-center ${
-                  i % 2 !== 0 ? 'flex-row-reverse' : ''
-                }`}
-              >
-                <div className="col-lg-4">
-                  <NextImage field={item.fields.Thumbnail} width={400} height={300} />
-                </div>
-
-                <div className="col-lg-8">
-                  <h3 className="title-xs">
-                    <Text field={item.fields.Title}></Text>
-                  </h3>
-                  <p className="article-excerpt body-md">
-                    <Text field={item.fields.Excerpt}></Text>
-                  </p>
-                  <div className="d-flex flex-wrap gap-3 justify-content-between align-items-center">
-                    <Link href={item.url} className="btn btn-outline btn-md">
-                      {t('Read more') || 'Read more'}
+        {groupedItems.map((group, groupIndex) => (
+          <div
+            key={`group-${groupIndex}`}
+            className={`article-list-group ${groupIndex > 0 ? 'mt-5' : ''}`}
+          >
+            <div className="row gx-4 gx-lg-5">
+              {/* Large featured article on the left */}
+              {group[0] && (
+                <div className="col-lg-7 mb-4 mb-lg-0">
+                  <article className="article-featured h-100">
+                    <Link href={group[0].url} className="article-featured-link">
+                      <div className="article-featured-image mb-3">
+                        <NextImage
+                          field={group[0].fields.Thumbnail}
+                          width={800}
+                          height={500}
+                          className="w-100"
+                        />
+                      </div>
+                      <div className="article-featured-content">
+                        <h2 className="article-featured-title title-lg mb-2">
+                          <Text field={group[0].fields.Title} />
+                        </h2>
+                        {group[0].fields.Excerpt?.value && (
+                          <p className="article-featured-excerpt body-md mb-3">
+                            <Text field={group[0].fields.Excerpt} />
+                          </p>
+                        )}
+                      </div>
                     </Link>
-                  </div>
+                  </article>
+                </div>
+              )}
+
+              {/* Three smaller articles stacked on the right */}
+              <div className="col-lg-5">
+                <div className="article-list-small d-flex flex-column gap-4 h-100">
+                  {group.slice(1, 4).map((item) => (
+                    <article key={item.url} className="article-small">
+                      <Link href={item.url} className="article-small-link d-flex gap-3">
+                        <div className="article-small-image flex-shrink-0">
+                          <NextImage
+                            field={item.fields.Thumbnail}
+                            width={200}
+                            height={150}
+                            className="article-small-img"
+                          />
+                        </div>
+                        <div className="article-small-content flex-grow-1">
+                          <h3 className="article-small-title title-xs mb-2">
+                            <Text field={item.fields.Title} />
+                          </h3>
+                          {item.fields.Excerpt?.value && (
+                            <p className="article-small-excerpt body-sm text-muted d-none d-md-block">
+                              <Text field={item.fields.Excerpt} />
+                            </p>
+                          )}
+                        </div>
+                      </Link>
+                    </article>
+                  ))}
                 </div>
               </div>
-              {i === newsItems.length - 1 ? <></> : <hr />}
-            </React.Fragment>
-          ))}
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

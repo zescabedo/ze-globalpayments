@@ -27,18 +27,22 @@
     aspect-ratio: 1 / 1;
     background-color: transparent;
     padding: 0;
-    border-radius: 0;
+    border-radius: calc(var(--roundness) * 2);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 
-    img {
+    img,
+    span img,
+    picture img,
+    .next-image-wrapper img {
       object-fit: contain;
       object-position: center;
       width: 100%;
       height: 100%;
+      border-radius: calc(var(--roundness) * 2) !important;
     }
   }
 
@@ -63,12 +67,16 @@
       padding: 0;
       margin-top: 1rem;
       margin-bottom: 1rem;
-      border-radius: 0;
+      border-radius: calc(var(--roundness) * 2);
 
-      img {
+      img,
+      span img,
+      picture img,
+      .next-image-wrapper img {
         object-fit: contain;
         object-position: center;
         opacity: var(--five-col-cta-logo-opacity);
+        border-radius: calc(var(--roundness) * 2) !important;
       }
     }
   }

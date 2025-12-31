@@ -1,7 +1,7 @@
 .article-details {
   .article-content {
     .article-img {
-      border-radius: var(--roundness);
+      // border-radius: calc(var(--roundness) * 2) applied globally
       width: 100%;
       height: auto;
     }

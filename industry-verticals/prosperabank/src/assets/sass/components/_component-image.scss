@@ -18,7 +18,7 @@
     img {
       width: 100%;
       height: auto;
-      border-radius: var(--gpn-border-radius-md, 0.5rem);
+      // border-radius: calc(var(--roundness) * 2) applied globally
       max-width: 100%;
     }
 

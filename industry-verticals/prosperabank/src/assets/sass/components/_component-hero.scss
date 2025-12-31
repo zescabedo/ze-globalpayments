@@ -29,7 +29,7 @@
 
   &.rounded-corners {
     img {
-      border-radius: var(--roundness);
+      // border-radius: calc(var(--roundness) * 2) applied globally
     }
   }
 

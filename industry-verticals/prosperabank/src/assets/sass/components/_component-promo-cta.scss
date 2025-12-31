@@ -483,7 +483,7 @@
       aspect-ratio: var(--promo-cta-img-ratio);
       width: 100%;
       object-fit: cover;
-      border-radius: 0.4rem; // Match Featured Hero image rounding
+      // border-radius: calc(var(--roundness) * 2) applied globally
       overflow: hidden;
     }
   }

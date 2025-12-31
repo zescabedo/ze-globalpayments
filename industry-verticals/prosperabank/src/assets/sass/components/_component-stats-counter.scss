@@ -43,7 +43,7 @@
     transform: translateY(-50%);
     width: 17rem;
     aspect-ratio: 1 / 1;
-    border-radius: var(--roundness);
+    // border-radius: calc(var(--roundness) * 2) applied globally
     object-fit: cover;
 
     @include respond-to(mobile-large) {

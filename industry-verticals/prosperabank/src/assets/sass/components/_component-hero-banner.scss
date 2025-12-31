@@ -96,7 +96,7 @@
       width: 100%;
       max-height: 445px;
       object-fit: cover;
-      border-radius: var(--roundness);
+      // border-radius: calc(var(--roundness) * 2) applied globally
     }
   }
 
