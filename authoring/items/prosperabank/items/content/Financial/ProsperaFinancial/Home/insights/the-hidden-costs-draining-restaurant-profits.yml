@@ -2,15 +2,14 @@
 ID: "bc031618-4a29-40c4-b18c-4da61dbd6c53"
 Parent: "0b45c71d-61ae-44f3-9f7d-6c88185f0b15"
 Template: "f83ccefd-fc41-4a60-9882-8f7ea5cf41a8"
-Path: "/sitecore/content/Financial/ProsperaFinancial/Home/insights/introducing-mobile-finance"
+Path: "/sitecore/content/Financial/ProsperaFinancial/Home/insights/the-hidden-costs-draining-restaurant-profits"
 SharedFields:
 - ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
   Hint: __Workflow
   Value: "{63CC4D0D-63F1-4BFB-BF63-7EC9D231AFA8}"
 - ID: "ad26114f-29dd-4ef9-b5bf-1d64d558872d"
   Hint: BackgroundImage
-  Value: |
-    <image mediaid="{10CB9C1E-EDEB-45AE-9598-EAD7CF3B3204}" alt="Blurred background image - fountain pen on notebook" height="" width="" hspace="" vspace="" />
+  Value: 
 - ID: "ba2b872d-f67d-40dc-be41-6366b7030144"
   Hint: Thumbnail
   Value: |
@@ -24,7 +23,7 @@ SharedFields:
     <image mediaid="{C12B8394-B4C6-47ED-9470-CB46E184B03A}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "8fbcb323-ed8f-4d45-8d09-0213cc606752"
+  Value: "7f5f5429-a88d-4017-ad97-2e9feabc2a45"
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -40,9 +39,12 @@ SharedFields:
 Languages:
 - Language: en
   Fields:
+  - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
+    Hint: __Unversioned revision
+    Value: "1eb484e5-d799-4d04-91c1-26830e3f526b"
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: "Introducing MOBILE! Finance"
+    Value: The hidden costs draining restaurant profits
   Versions:
   - Version: 1
     Fields:
@@ -90,7 +92,7 @@ Languages:
         <link linktype="internal" id="d26af0f1-5e54-41f0-b026-c96d4d2beea3" anchor="" querystring="" target="" class="" text="Download the report" title=""/>
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "9b75a132-ad0a-4303-9ab3-6ffbcef741bb"
+      Value: "5d53f375-ef61-4146-ac6f-2ad83c12939d"
     - ID: "b50fd793-8c46-4adf-b5e7-fe949d0852b6"
       Hint: Category
       Value: |
@@ -102,7 +104,7 @@ Languages:
         sitecore\zach.escabedo@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251231T234614Z
+      Value: 20260101T000711Z
     - ID: "e81c4912-a4d2-4466-842c-02f0b2c9dc42"
       Hint: Title
       Value: The hidden costs draining restaurant profits

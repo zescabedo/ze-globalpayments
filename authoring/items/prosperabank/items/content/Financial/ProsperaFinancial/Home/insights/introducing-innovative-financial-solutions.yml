@@ -20,7 +20,11 @@ SharedFields:
   Value: 800
 - ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
   Hint: __Thumbnail
-  Value: 
+  Value: |
+    <image mediaid="{41776724-AF83-4498-83AE-61ACD4A99C8D}" />
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "c93a1988-8763-4a3e-a29e-3d176c4eef0a"
 - ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
   Hint: __Renderings
   Value: |
@@ -76,6 +80,9 @@ Languages:
         <p>Whether users are looking to save for a dream vacation, build an emergency fund, or simply gain better control over their finances, PLAY! Finance offers a comprehensive suite of solutions to meet their needs.</p>
         <p><strong>About PLAY! Finance</strong><br />
         PLAY! Finance is a leading provider of innovative financial solutions, dedicated to empowering individuals to achieve financial wellness. Through advanced technology and personalized tools, PLAY! Finance is redefining the way consumers engage with their finances, making financial management accessible, engaging, and rewarding for all.</p>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260101T001245Z
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
       Value: "{F0C30D3F-4537-4F66-98A4-213D0FA050FE}"
@@ -85,9 +92,20 @@ Languages:
     - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
       Hint: NavigationTitle
       Value: Introducing innovative financial solutions for modern consumers
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\zach.escabedo@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "8b5212c3-0ef8-4601-a295-812ccdad3f86"
+      Value: "68c0332c-9cc3-4fab-a008-a8769e3713c3"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\zach.escabedo@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260101T001245Z
     - ID: "e81c4912-a4d2-4466-842c-02f0b2c9dc42"
       Hint: Title
       Value: Introducing innovative financial solutions for modern consumers

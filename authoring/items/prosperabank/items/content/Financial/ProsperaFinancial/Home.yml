@@ -370,7 +370,7 @@ Languages:
             </r>
             <r
               uid="{854DE8CE-208F-494D-B7C8-C1162D00144F}"
-              s:par="FieldNames=%7B96BD1766-274B-433A-81E0-6451C55247A2%7D&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;DynamicPlaceholderId=24&amp;NumberOfItems=2" />
+              s:par="FieldNames=%7BA9694CA0-7FA0-49E4-93F3-7203FAA83455%7D&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;DynamicPlaceholderId=24&amp;NumberOfItems=2" />
             <r
               uid="{251B0936-4659-4127-9952-52CA5140D803}"
               s:par="FieldNames&amp;RenderingIdentifier&amp;Styles&amp;CSSStyles&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;DynamicPlaceholderId=22" />
@@ -394,7 +394,7 @@ Languages:
         sitecore\kaitlyn.folsom@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "eb5520fb-b16a-4a55-8779-36eb63a0ad70"
+      Value: "e1da995c-70b7-44ba-9e3b-87335b1e0323"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -404,7 +404,7 @@ Languages:
       Value: Global Payments
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251231T192825Z
+      Value: 20251231T235520Z
 - Language: "fr-CA"
   Versions:
   - Version: 1

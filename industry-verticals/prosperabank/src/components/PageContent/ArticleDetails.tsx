@@ -61,7 +61,9 @@ export const Default = (props: PageBackgroundProps): JSX.Element => {
         className={`component article-details page-background spaced-top col-12 ${props.params?.styles?.trimEnd()}`}
         id={id ? id : undefined}
       >
-        <ParallaxBackgroundImage BackgroundImage={props.fields.BackgroundImage} />
+        {props.fields.BackgroundImage?.value?.src && (
+          <ParallaxBackgroundImage BackgroundImage={props.fields.BackgroundImage} />
+        )}
 
         <div className="container">
           <Placeholder name="page-navigation" rendering={props.rendering} />

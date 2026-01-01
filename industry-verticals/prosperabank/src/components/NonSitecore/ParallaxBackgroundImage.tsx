@@ -10,6 +10,12 @@ export const ParallaxBackgroundImage = (props: ParallaxImageProps): JSX.Element 
   const { page } = useSitecore();
   const isPageEditing = page.mode.isEditing;
 
+  // Don't render anything if there's no image value (even in editing mode to avoid placeholder)
+  const hasImage = props.BackgroundImage?.value?.src;
+  if (!hasImage) {
+    return <></>;
+  }
+
   return isPageEditing ? (
     <Image field={props.BackgroundImage} className="background-image"></Image>
   ) : (
