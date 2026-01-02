@@ -22,6 +22,7 @@ interface Fields {
   Subtitle: Field<string>;
   Text: RichTextField;
   Image: ImageField;
+  Video: ImageField;
   Link: LinkField;
   Link2: LinkField;
 }
@@ -95,6 +96,52 @@ const getLinkText = (link?: LinkField): string => {
   return 'Explore our payment solutions';
 };
 
+const MediaContent = ({
+  video,
+  image,
+  className,
+  isPageEditing,
+  width = 900,
+  height = 900,
+}: {
+  video?: ImageField;
+  image?: ImageField;
+  className?: string;
+  isPageEditing: boolean;
+  width?: number;
+  height?: number;
+}): JSX.Element => {
+  const videoSrc = video?.value?.src;
+  const hasVideo = videoSrc && !isPageEditing;
+  
+  if (hasVideo) {
+    // Determine video type from file extension
+    const videoType = videoSrc.toLowerCase().endsWith('.webm') ? 'video/webm' : 'video/mp4';
+    
+    return (
+      <video
+        className={className}
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster={image?.value?.src}
+      >
+        <source src={videoSrc} type={videoType} />
+      </video>
+    );
+  }
+  
+  return (
+    <NextImage
+      field={image}
+      className={className}
+      width={width}
+      height={height}
+    />
+  );
+};
+
 export const Default = (props: PromoCtaProps): JSX.Element => {
   const id = props.params.RenderingIdentifier;
   const { page } = useSitecore();
@@ -108,6 +155,7 @@ export const Default = (props: PromoCtaProps): JSX.Element => {
     props.fields?.Subtitle?.value ||
     props.fields?.Text?.value ||
     props.fields?.Image?.value?.src ||
+    props.fields?.Video?.value?.src ||
     props.fields?.Link?.value?.href ||
     props.fields?.Link2?.value?.href ||
     props.fields?.Eyebrow?.value;
@@ -177,11 +225,13 @@ export const Default = (props: PromoCtaProps): JSX.Element => {
           <div className={imageColClass}>
             <div className="image-wrapper">
               <DottedAccent className="dotted-accent-top" />
-              <NextImage
-                field={props.fields.Image}
+              <MediaContent
+                video={props.fields.Video}
+                image={props.fields.Image}
                 className={`d-block ${isSideBySide ? 'mx-lg-auto' : 'mx-auto'} img-fluid ${
                   !isPageEditing ? `fade-section ${isVisible ? 'is-visible' : ''}` : ''
                 }`}
+                isPageEditing={isPageEditing}
                 width={900}
                 height={900}
               />
@@ -207,6 +257,7 @@ export const Horizontal = (props: PromoCtaProps): JSX.Element => {
     props.fields?.Subtitle?.value ||
     props.fields?.Text?.value ||
     props.fields?.Image?.value?.src ||
+    props.fields?.Video?.value?.src ||
     props.fields?.Link?.value?.href ||
     props.fields?.Link2?.value?.href ||
     props.fields?.Eyebrow?.value;
@@ -265,11 +316,13 @@ export const Horizontal = (props: PromoCtaProps): JSX.Element => {
           <div className={imageColClass}>
             <div className="image-wrapper">
               <DottedAccent className="dotted-accent-top" />
-              <NextImage
-                field={props.fields.Image}
+              <MediaContent
+                video={props.fields.Video}
+                image={props.fields.Image}
                 className={`d-block mx-lg-auto img-fluid ${
                   !isPageEditing ? `fade-section ${isVisible ? 'is-visible' : ''}` : ''
                 }`}
+                isPageEditing={isPageEditing}
                 width={900}
                 height={900}
               />
@@ -337,11 +390,13 @@ export const WithPlaceholderColumn = (props: PromoCtaProps): JSX.Element => {
 
               <div className="image-wrapper d-none d-md-block col-md-8">
                 <DottedAccent className="dotted-accent-top" />
-                <NextImage
-                  field={props.fields.Image}
+                <MediaContent
+                  video={props.fields.Video}
+                  image={props.fields.Image}
                   className={`d-block mx-lg-auto img-fluid ${
                     !isPageEditing ? `fade-section ${isVisible ? 'is-visible' : ''}` : ''
                   }`}
+                  isPageEditing={isPageEditing}
                   width={900}
                   height={900}
                 />

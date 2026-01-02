@@ -28,6 +28,10 @@ Languages:
     - ID: "2fbad11a-8129-4c7e-aacc-6973619327a1"
       Hint: Eyebrow
       Value: 
+    - ID: "326f3fb4-ff4f-423c-87c6-2cc15a8eed22"
+      Hint: Video
+      Value: |
+        <Image src="https://starter-verticals.sitecoresandbox.cloud/api/public/content/c7aaa856865c4c70b8dcc68772f93e28?v=24ecc0fb" dam-id="A7-u7P1ZTpmidH6EyCunUA" width="1184" height="736" alt="TheLuminaSofa.mp4" dam-content-type="Video" thumbnailsrc="https://starter-verticals.sitecoresandbox.cloud/api/gateway/66637/thumbnail" />
     - ID: "507ba267-78fc-42f1-ac96-a1cb769b6de6"
       Hint: Link
       Value: |
@@ -38,7 +42,7 @@ Languages:
         sitecore\johannes.zijlstra@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "bcb4c62e-e7e6-420a-9041-8431ab781dda"
+      Value: "f077e9b1-5d67-4c73-a371-846f820aef4b"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
@@ -48,7 +52,7 @@ Languages:
       Value: 
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251218T024100Z
+      Value: 20260102T154757Z
     - ID: "e4f11fe1-3b24-42e4-8cea-9ed7fda32bab"
       Hint: Subtitle
       Value: 

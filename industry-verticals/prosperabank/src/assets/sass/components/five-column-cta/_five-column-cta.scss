@@ -9,6 +9,49 @@
     padding: 0 $size-padding;
   }
 
+  // Title and Subtitle header (shared between Default and Statistics variants)
+  .statistics-header {
+    text-align: center;
+    margin-bottom: 4rem;
+
+    @include respond-to(mobile-large) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .statistics-title {
+    font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 2.4rem; // title-sm
+    line-height: 3.2rem;
+    font-weight: 900;
+    color: #0C0C0C;
+    margin-bottom: 1.6rem;
+    margin-top: 0;
+
+    @include respond-to(mobile-large) {
+      font-size: 2.0rem; // title-xs
+      line-height: 2.8rem;
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  .statistics-subtitle {
+    font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.8rem; // body-md
+    line-height: 2.7rem;
+    font-weight: 400;
+    color: #0C0C0C;
+    margin: 0;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include respond-to(mobile-large) {
+      font-size: 1.6rem; // body-sm
+      line-height: 2.4rem;
+    }
+  }
+
   div.row {
     @include respond-to(mobile-large) {
       margin: 0 calc(-1 * $size-padding);
@@ -77,6 +120,126 @@
         object-position: center;
         opacity: var(--five-col-cta-logo-opacity);
         border-radius: calc(var(--roundness) * 2) !important;
+      }
+    }
+  }
+
+  // Statistics Variant Styles
+  &.statistics-variant {
+    padding: 6rem 0;
+    font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    @include respond-to(mobile-large) {
+      padding: 4rem 0;
+      padding-left: $size-padding;
+      padding-right: $size-padding;
+    }
+
+    .statistics-row {
+      // Use same responsive behavior as default variant
+      @include respond-to(mobile-large) {
+        margin: 0 calc(-1 * $size-padding);
+      }
+    }
+
+    .statistics-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      @include respond-to(mobile-large) {
+        padding: 0 $size-padding;
+      }
+    }
+
+    .statistics-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 100%;
+    }
+
+    // Circular Progress Styles
+    .circular-progress-wrapper {
+      position: relative;
+      margin-bottom: 2.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circular-progress-svg {
+      transform: rotate(-90deg);
+      transform-origin: center;
+    }
+
+    .circular-progress-circle {
+      transition: stroke-dashoffset 0.3s ease;
+    }
+
+    .circular-progress-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.2rem;
+    }
+
+    .circular-progress-number {
+      font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 4.76rem; // 15% reduction from 5.6rem
+      font-weight: 900;
+      line-height: 1;
+      color: #0C0C0C;
+      letter-spacing: -0.02em;
+
+      @include respond-to(mobile-large) {
+        font-size: 4.08rem; // 15% reduction from 4.8rem
+      }
+    }
+
+    .circular-progress-symbol {
+      font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 2.72rem; // 15% reduction from 3.2rem
+      font-weight: 900;
+      line-height: 1;
+      color: #0C0C0C;
+      margin-left: 0.1rem;
+
+      @include respond-to(mobile-large) {
+        font-size: 2.38rem; // 15% reduction from 2.8rem
+      }
+    }
+
+    .statistics-text {
+      font-family: 'GPCommerce', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1.8rem;
+      line-height: 1.6;
+      color: #0C0C0C;
+      max-width: 32rem;
+      margin: 0;
+      padding: 0 1.6rem;
+
+      @include respond-to(mobile-large) {
+        font-size: 1.6rem;
+        max-width: 100%;
+        padding: 0 1rem;
+      }
+    }
+
+    // Fade in animation
+    .fade-section {
+      opacity: 0;
+      transform: translateY(2rem);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+      &.is-visible {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   }

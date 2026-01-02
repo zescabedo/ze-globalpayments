@@ -77,13 +77,14 @@ li {
 }
 
 // Global image border-radius - double the roundness value
-// This applies to all images unless overridden by component-specific styles
+// This applies to all images and videos unless overridden by component-specific styles
 // Component-specific border-radius rules will take precedence due to CSS specificity
 img,
 span img,
 picture img,
 .next-image-wrapper img,
-[class*="next-image"] img {
+[class*="next-image"] img,
+video {
   border-radius: calc(var(--roundness) * 2);
 }
 
@@ -95,7 +96,12 @@ picture img,
 .component.page-background img,
 [class*="background-image"] img,
 [class*="bg-image"] img,
-[style*="background-image"] img {
+[style*="background-image"] img,
+.page-background video,
+.component.page-background video,
+[class*="background-image"] video,
+[class*="bg-image"] video,
+[style*="background-image"] video {
   border-radius: 0;
 }
 
