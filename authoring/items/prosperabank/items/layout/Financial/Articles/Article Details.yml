@@ -14,6 +14,7 @@ SharedFields:
     {9953B06F-4247-4888-B2EF-9BF0CDC0B7A9}
     {936BBB4A-6772-4DB5-A0EA-FABEE542EBA9}
     {E390A922-CE56-4892-A8E7-4BE5592E6AD1}
+    {9051DAB0-3CA8-41F1-9C27-6DF666D20692}
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: Applications/32x32/text_rich.png
@@ -43,7 +44,7 @@ SharedFields:
   Value: 
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "db9f2829-6472-46e2-a5ab-92039d576927"
+  Value: "04e4aed4-449c-4cf8-91f0-184fff0aff14"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: 
@@ -76,14 +77,14 @@ Languages:
         sitecore\kaitlyn.folsom@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e7a5a3d2-7539-45f6-8e0a-d7206c26c098"
+      Value: "933ce7b0-8674-4a89-ae1f-bc74bfaae5c7"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\kaitlyn.folsom@sitecore.com
+        sitecore\zach.escabedo@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251031T193702Z
+      Value: 20260102T214614Z
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"

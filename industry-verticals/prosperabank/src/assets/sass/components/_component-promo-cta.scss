@@ -411,7 +411,8 @@
       margin-left: auto;
       margin-right: auto;
       
-      img {
+      img,
+      video {
         width: 100%;
         max-width: 100%;
         height: auto;
@@ -432,7 +433,8 @@
       width: 100%;
       max-width: 100%;
       
-      img {
+      img,
+      video {
         width: 100%;
         max-width: 100%;
         height: auto;
@@ -468,7 +470,8 @@
       margin-left: auto;
       margin-right: auto;
       
-      img {
+      img,
+      video {
         width: 100%;
         max-width: 100%;
         height: auto;
@@ -478,15 +481,104 @@
 
   .image-wrapper {
     position: relative;
+  }
 
-    img {
-      aspect-ratio: var(--promo-cta-img-ratio);
-      width: 100%;
-      object-fit: cover;
-      // border-radius: calc(var(--roundness) * 2) applied globally
-      overflow: hidden;
+  // Base image/video styling
+  img,
+  video {
+    aspect-ratio: var(--promo-cta-img-ratio);
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  // Add rounded corners to default and horizontal variants (not with-background-image)
+  &:not(.with-background-image) {
+    .image-wrapper {
+      img,
+      video {
+        border-radius: calc(var(--roundness) * 2);
+      }
     }
   }
+
+  // Image Fit Style Options
+  &.img-fit-cover {
+    &:not(.with-background-image) {
+      .image-wrapper {
+        img,
+        video {
+          object-fit: cover;
+          height: auto !important;
+          aspect-ratio: auto !important;
+          // Keep rounded corners for Promo CTA
+          border-radius: calc(var(--roundness) * 2) !important;
+        }
+      }
+    }
+  }
+
+  &.img-fit-contain {
+    &:not(.with-background-image) {
+      .image-wrapper {
+        img,
+        video {
+          object-fit: contain;
+          // Keep rounded corners for Promo CTA
+          border-radius: calc(var(--roundness) * 2) !important;
+        }
+      }
+    }
+
+    // Position layered image so it ends at 50% of base image (keep same size, just reposition)
+    .promo-cta-layered-media {
+      left: auto;
+      right: 50%;
+      transform: translate(0, -10%);
+
+      @include respond-to(mobile-large) {
+        transform: translate(0, -5%);
+      }
+    }
+  }
+
+  // Layered image container
+  .promo-cta-media-container {
+    position: relative;
+    width: 100%;
+  }
+
+  // Layered media styling (positioned on top of base image)
+  .promo-cta-layered-media {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 35% !important;
+    height: auto;
+    max-width: 400px !important;
+    z-index: 2;
+    transform: translate(-10%, -10%);
+    border-radius: calc(var(--roundness) * 2);
+    overflow: hidden;
+
+    img,
+    video {
+      width: 100% !important;
+      height: auto;
+      aspect-ratio: var(--promo-cta-img-ratio);
+      object-fit: cover;
+      border-radius: calc(var(--roundness) * 2);
+      display: block;
+      max-width: 100% !important;
+    }
+
+    @include respond-to(mobile-large) {
+      width: 30% !important;
+      max-width: 250px !important;
+      transform: translate(-5%, -5%);
+    }
+  }
+
 
   // Sitecore style option: "No background" should be white
   &.no-background {

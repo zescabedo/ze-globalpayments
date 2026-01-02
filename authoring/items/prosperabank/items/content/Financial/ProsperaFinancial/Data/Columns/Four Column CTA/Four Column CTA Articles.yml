@@ -1,8 +1,8 @@
 ﻿---
 ID: "ee12ee55-11a8-495f-bcc5-9ac98583b175"
-Parent: "c252a182-50c2-4e48-8515-e86bd96cb5ce"
+Parent: "93007373-fc81-4fd2-9efe-df45862a48d4"
 Template: "1b694ef9-154d-429a-9c3f-d7774cd4a852"
-Path: /sitecore/content/Financial/ProsperaFinancial/Data/Promos/Four Column CTA/Four Column CTA Articles
+Path: /sitecore/content/Financial/ProsperaFinancial/Data/Columns/Four Column CTA/Four Column CTA Articles
 SharedFields:
 - ID: "23f621dd-d403-49df-93f6-391a1757feb3"
   Hint: Image4
@@ -20,6 +20,12 @@ SharedFields:
   Hint: Image2
   Value: |
     <image mediaid="032b60ed-5aa8-4da5-a142-c96693c88d17" alt="four-col-promo-2" height="" width="" hspace="" vspace="" />
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 150
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "d85bb399-f0a3-4d51-b14b-7f3ef4f11ce1"
 Languages:
 - Language: en
   Versions:
@@ -49,7 +55,7 @@ Languages:
         sitecore\johannes.zijlstra@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "27ce3259-b8ff-4793-9204-73c779782e77"
+      Value: "bf9d3f0b-b66a-414e-9124-c3516f8558af"
     - ID: "8f23bb30-a050-47b3-bc66-6ca478213eef"
       Hint: Text3
       Value: For evaluation and recommendations
@@ -71,7 +77,7 @@ Languages:
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\johannes.zijlstra@sitecore.com
+        sitecore\zach.escabedo@sitecore.com
     - ID: "be5597c5-a55d-4a6a-bf53-7fe1a7bf4bdc"
       Hint: Title1
       Value: Customer support
@@ -80,7 +86,7 @@ Languages:
       Value: Explore our network of branch offices and ATMS
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251030T165650Z
+      Value: 20260102T221254Z
     - ID: "df548755-6a31-445f-bb84-c704698d6048"
       Hint: Link2
       Value: |

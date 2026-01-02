@@ -28,41 +28,50 @@ interface CategoryItem {
 }
 
 interface Fields {
-  Title: Field<string>;
-  Excerpt: Field<string>;
-  Content: RichTextField;
-  Thumbnail: ImageField;
-  BackgroundImage: ImageField;
-  Name: Field<string>;
-  Photo: ImageField;
-  Position: Field<string>;
+  Title?: Field<string>;
+  Excerpt?: Field<string>;
+  Content?: RichTextField;
+  Thumbnail?: ImageField;
+  BackgroundImage?: ImageField;
+  Name?: Field<string>;
+  Photo?: ImageField;
+  Position?: Field<string>;
   Button?: LinkField;
   Category?: CategoryItem[] | Field<string>;
 }
 
 export type PageBackgroundProps = ComponentProps & {
-  fields: Fields;
+  fields?: Fields;
 };
 
 export const Default = (props: PageBackgroundProps): JSX.Element => {
   const id = props.params?.RenderingIdentifier;
   const { page } = useSitecore();
   const isPageEditing = page.mode.isEditing;
+  
+  // Safe field access with fallbacks
+  const { fields } = props || {};
+  const { Title, Excerpt, Thumbnail, BackgroundImage, Content, Button, Category } = fields || {};
+  
+  // Check if "no-background" style is selected
+  const sxaStyles = `${props.params?.styles || ''}`;
+  const hasNoBackground = sxaStyles.includes('no-background');
+  
   return (
     <>
       <Head>
-        <meta property="og:description" content={props.fields?.Excerpt.value} />
-        <meta property="og:name" content={props.fields?.Title?.value} />
-        <meta property="og:title" content={props.fields?.Title?.value} />
-        <meta property="og:image" content={props.fields?.Thumbnail?.value?.src} />
+        <meta property="og:description" content={Excerpt?.value || ''} />
+        <meta property="og:name" content={Title?.value || ''} />
+        <meta property="og:title" content={Title?.value || ''} />
+        <meta property="og:image" content={Thumbnail?.value?.src || ''} />
         <meta property="og:type" content="article" />
       </Head>
       <div
-        className={`component article-details page-background spaced-top col-12 ${props.params?.styles?.trimEnd()}`}
+        className={`component article-details page-background spaced-top col-12 ${props.params?.styles?.trimEnd() || ''}`}
         id={id ? id : undefined}
       >
-        {props.fields.BackgroundImage?.value?.src && (
-          <ParallaxBackgroundImage BackgroundImage={props.fields.BackgroundImage} />
+        {BackgroundImage?.value?.src && (
+          <ParallaxBackgroundImage BackgroundImage={BackgroundImage} />
         )}
 
         <div className="container">
@@ -70,24 +79,26 @@ export const Default = (props: PageBackgroundProps): JSX.Element => {
         </div>
 
         <div>
-          <div className="background-content component-spaced container rounded-corners">
+          <div className={`${hasNoBackground ? '' : 'background-content'} component-spaced container rounded-corners`}>
             <div className="p-3 p-sm-5">
               <div className="article-content">
                 <div className="row row-gap-4 gx-5 align-items-start">
                   <div className="col-12 col-lg-6">
-                    <div className="article-thumbnail-wrapper">
-                      <NextImage
-                        field={props.fields.Thumbnail}
-                        className="article-img img-fluid"
-                        width={600}
-                        height={400}
-                      />
-                    </div>
+                    {(Thumbnail || isPageEditing) && (
+                      <div className="article-thumbnail-wrapper">
+                        <NextImage
+                          field={Thumbnail}
+                          className="article-img img-fluid"
+                          width={600}
+                          height={400}
+                        />
+                      </div>
+                    )}
                   </div>
                   <div className="col-12 col-lg-6">
                     <div className="article-header-content">
                       {(() => {
-                        const categories = props.fields.Category;
+                        const categories = Category;
                         if (!categories) return null;
                         
                         // Handle array of category items
@@ -126,18 +137,20 @@ export const Default = (props: PageBackgroundProps): JSX.Element => {
                         
                         return null;
                       })()}
-                      <h1 className="article-title">
-                        <Text field={props.fields.Title} />
-                      </h1>
-                      {(isPageEditing || props.fields.Excerpt?.value) && (
+                      {(Title || isPageEditing) && (
+                        <h1 className="article-title">
+                          <Text field={Title} />
+                        </h1>
+                      )}
+                      {(isPageEditing || Excerpt?.value) && (
                         <p className="article-excerpt">
-                          <Text field={props.fields.Excerpt} />
+                          <Text field={Excerpt} />
                         </p>
                       )}
-                      {(isPageEditing || (props.fields.Button?.value?.href && props.fields.Button?.value?.text)) && props.fields.Button && (
+                      {(isPageEditing || (Button?.value?.href && Button?.value?.text)) && Button && (
                         <div className="article-button-wrapper mt-4">
-                          <Link field={props.fields.Button} className="btn btn-cta-primary btn-sm">
-                            {props.fields.Button?.value?.text || 'Button'}
+                          <Link field={Button} className="btn btn-cta-primary btn-sm">
+                            {Button?.value?.text || 'Button'}
                           </Link>
                         </div>
                       )}
@@ -147,9 +160,14 @@ export const Default = (props: PageBackgroundProps): JSX.Element => {
                     </div>
                   </div>
                 </div>
-                <div className="article-content-body mt-5">
-                  <RichText field={props.fields.Content} />
+                <div className="row">
+                  <Placeholder name="article-page-content" rendering={props.rendering} />
                 </div>
+                {(Content || isPageEditing) && (
+                  <div className="article-content-body mt-5">
+                    <RichText field={Content} />
+                  </div>
+                )}
               </div>
               <div className="row">
                 <Placeholder name="background-page-content" rendering={props.rendering} />
@@ -165,42 +183,60 @@ export const Default = (props: PageBackgroundProps): JSX.Element => {
 
 export const Simple = (props: PageBackgroundProps): JSX.Element => {
   const id = props.params?.RenderingIdentifier;
+  const { page } = useSitecore();
+  const isPageEditing = page.mode.isEditing;
+  
+  // Safe field access with fallbacks
+  const { fields } = props || {};
+  const { Title, Excerpt, Thumbnail, Content } = fields || {};
+  
   return (
     <>
       <Head>
-        <meta property="og:description" content={props.fields?.Excerpt.value} />
-        <meta property="og:name" content={props.fields?.Title?.value} />
-        <meta property="og:title" content={props.fields?.Title?.value} />
-        <meta property="og:image" content={props.fields?.Thumbnail?.value?.src} />
+        <meta property="og:description" content={Excerpt?.value || ''} />
+        <meta property="og:name" content={Title?.value || ''} />
+        <meta property="og:title" content={Title?.value || ''} />
+        <meta property="og:image" content={Thumbnail?.value?.src || ''} />
         <meta property="og:type" content="article" />
       </Head>
       <div
-        className={`component simple-article-details mt-4 ${props.params?.styles?.trimEnd()}`}
+        className={`component simple-article-details mt-4 ${props.params?.styles?.trimEnd() || ''}`}
         id={id ? id : undefined}
       >
-        <div className="container container-wide">
-          <h1 className="article-title display-xxl">
-            <Text field={props.fields.Title} />
-          </h1>
-        </div>
-        <div className="container container-widest-fluid">
-          <NextImage
-            field={props.fields.Thumbnail}
-            className="article-img img-fluid"
-            width={1650}
-            height={750}
-          />
-        </div>
+        {(Title || isPageEditing) && (
+          <div className="container container-wide">
+            <h1 className="article-title display-xxl">
+              <Text field={Title} />
+            </h1>
+          </div>
+        )}
+        {(Thumbnail || isPageEditing) && (
+          <div className="container container-widest-fluid">
+            <NextImage
+              field={Thumbnail}
+              className="article-img img-fluid"
+              width={1650}
+              height={750}
+            />
+          </div>
+        )}
         <div className="container">
           <div className="article-content">
             <div className="row">
               <div className="col-12 col-lg-6 mx-auto">
-                <p className="article-excerpt body-md">
-                  <Text field={props.fields.Excerpt} />
-                </p>
-                <div className="article-content-body rich-text mt-5">
-                  <RichText field={props.fields.Content} />
+                {(Excerpt || isPageEditing) && (
+                  <p className="article-excerpt body-md">
+                    <Text field={Excerpt} />
+                  </p>
+                )}
+                <div className="row">
+                  <Placeholder name="article-page-content" rendering={props.rendering} />
                 </div>
+                {(Content || isPageEditing) && (
+                  <div className="article-content-body rich-text mt-5">
+                    <RichText field={Content} />
+                  </div>
+                )}
                 <div className="row article-meta-row">
                   <Placeholder name="article-meta" rendering={props.rendering} />
                 </div>

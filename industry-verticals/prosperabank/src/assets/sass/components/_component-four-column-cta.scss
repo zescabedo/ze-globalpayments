@@ -83,6 +83,55 @@
     transition: all 0.5s ease-in-out;
   }
 
+  // Image Fit Style Options
+  &.img-fit-cover {
+    img,
+    span img,
+    picture img,
+    .next-image-wrapper img {
+      object-fit: cover;
+      border-radius: 0 !important;
+      height: auto;
+    }
+  }
+
+  &.img-fit-contain {
+    img,
+    span img,
+    picture img,
+    .next-image-wrapper img {
+      object-fit: contain;
+    }
+  }
+
+  // Text Size - Small Style Option
+  &.text-sm {
+    // Target only text fields in content-wrapper (text1, text2, text3, text4, etc.), not subtitle
+    .content-wrapper p,
+    .content-wrapper .text-wrapper p {
+      font-size: 1.6rem; // 16px - matches site body-sm size
+      line-height: 2.4rem; // 1.5 line height
+
+      @include respond-to(mobile-large) {
+        font-size: 1.6rem; // 16px on mobile
+        line-height: 2.4rem;
+      }
+    }
+
+    // Apply to Statistics variant text (text1, text2, text3, text4, etc.)
+    &.statistics-variant {
+      .statistics-text {
+        font-size: 1.6rem; // 16px - matches site body-sm size
+        line-height: 2.4rem; // 1.5 line height
+
+        @include respond-to(mobile-large) {
+          font-size: 1.6rem; // 16px on mobile
+          line-height: 2.4rem;
+        }
+      }
+    }
+  }
+
   .row {
     @include respond-to(mobile-large) {
       gap: 3em;

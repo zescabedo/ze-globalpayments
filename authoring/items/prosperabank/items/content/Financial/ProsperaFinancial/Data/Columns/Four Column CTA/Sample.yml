@@ -3,6 +3,13 @@ ID: "aa651b9b-a829-4b2a-9a92-5156d5fc811e"
 Parent: "93007373-fc81-4fd2-9efe-df45862a48d4"
 Template: "1b694ef9-154d-429a-9c3f-d7774cd4a852"
 Path: /sitecore/content/Financial/ProsperaFinancial/Data/Columns/Four Column CTA/Sample
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "b4784e86-bb59-4240-be20-d343820ce784"
 Languages:
 - Language: en
   Versions:
@@ -30,7 +37,10 @@ Languages:
       Value: 50
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1af032f9-201d-4ee9-8665-a201e680147c"
+      Value: "33786210-05af-4b14-af04-3171a5a37c67"
+    - ID: "96abf921-4ade-4db1-955d-3f3be1854a4c"
+      Hint: Title
+      Value: Lorem Ipsum
     - ID: "af17b09a-65a8-4a35-a921-8e666dc9ed86"
       Hint: Stat3
       Value: 43
@@ -40,7 +50,7 @@ Languages:
         sitecore\zach.escabedo@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260102T183052Z
+      Value: 20260102T221254Z
     - ID: "ec6caffa-5719-48df-b0d1-71cbe3dc260f"
       Hint: Stat1
       Value: 97

@@ -1,20 +1,18 @@
 ﻿---
-ID: "bb81a942-713a-4da1-ab8e-e6d504899ed3"
-Parent: "e80b2eb2-f3c4-4c86-b76c-041808116d0e"
-Template: "8fe7f8dc-cb5d-42c2-99f8-76608c243f10"
-Path: /sitecore/content/Financial/ProsperaFinancial/Data/Promos/Promo CTA
+ID: "579f2751-74f9-4d91-9cea-21d91799bcd6"
+Parent: "0799ce0d-c5c5-49df-a3e1-93cfb71e95b9"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Project/Financial/Components/Promo CTA/Data/LayeredVideo
 SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Value: |
-    {8FE7F8DC-CB5D-42C2-99F8-76608C243F10}
-    {C0943942-AE0F-4205-86FA-84884CCE4A53}
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Image
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 0
+  Value: 600
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "833a69bf-dad0-44e9-88f6-4ce194e1f311"
+  Value: "025f69ca-e4d4-4ce3-8886-3c8f4526fbf1"
 Languages:
 - Language: en
   Versions:
@@ -22,18 +20,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20251218T174812Z
+      Value: 20260102T222147Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\zach.escabedo@sitecore.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\zach.escabedo@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "93e10232-fd25-462d-961e-118fedef404e"
+      Value: "a7d5d42a-e615-4a36-a467-dc9007e66821"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\zach.escabedo@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260102T221310Z
+      Value: 20260102T222147Z

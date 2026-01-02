@@ -1,8 +1,8 @@
 ﻿---
 ID: "1cece0c1-837c-4c8b-8755-c979583218a3"
-Parent: "8237a426-6c6a-4564-ab35-a6066a050f2e"
+Parent: "375477ac-4c4d-404c-8bf2-4c2dd19e6628"
 Template: "1812bf3e-6bdd-466d-99b2-0d7cebb020fc"
-Path: /sitecore/content/Financial/ProsperaFinancial/Data/Promos/Two Column CTA/Two Column CTA 1
+Path: /sitecore/content/Financial/ProsperaFinancial/Data/Columns/Two Column CTA/Two Column CTA 1
 SharedFields:
 - ID: "168fed07-0f41-44f5-a14e-f134e16b1477"
   Hint: Image1
@@ -14,7 +14,10 @@ SharedFields:
     <image mediaid="{F64C8C16-8C71-44E1-A658-B3070574B89E}" alt="Alarm clock surrounded by stacks of coins" height="" width="" hspace="" vspace="" />
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 1600
+  Value: 800
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "80834db2-bdc5-4cb5-a267-904354326e21"
 Languages:
 - Language: en
   Versions:
@@ -49,14 +52,14 @@ Languages:
       Value: "See all the details with our self-service loan calculator."
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "6f5245cc-8e78-4077-9406-77461a761b63"
+      Value: "d2c92d81-c50c-4e77-a588-9dea0a9e30ce"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\johannes.zijlstra@sitecore.com
+        sitecore\zach.escabedo@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20251030T165659Z
+      Value: 20260102T221346Z
     - ID: "eeb59bf3-72d2-4e49-9a37-3902b7a236a9"
       Hint: Text2
       Value: Find a loan duration that works for you with our loan calculator. 

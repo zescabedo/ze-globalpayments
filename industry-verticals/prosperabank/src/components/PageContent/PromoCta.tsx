@@ -23,6 +23,8 @@ interface Fields {
   Text: RichTextField;
   Image: ImageField;
   Video: ImageField;
+  LayeredImage?: ImageField;
+  LayeredVideo?: ImageField;
   Link: LinkField;
   Link2: LinkField;
 }
@@ -156,6 +158,8 @@ export const Default = (props: PromoCtaProps): JSX.Element => {
     props.fields?.Text?.value ||
     props.fields?.Image?.value?.src ||
     props.fields?.Video?.value?.src ||
+    props.fields?.LayeredImage?.value?.src ||
+    props.fields?.LayeredVideo?.value?.src ||
     props.fields?.Link?.value?.href ||
     props.fields?.Link2?.value?.href ||
     props.fields?.Eyebrow?.value;
@@ -225,16 +229,28 @@ export const Default = (props: PromoCtaProps): JSX.Element => {
           <div className={imageColClass}>
             <div className="image-wrapper">
               <DottedAccent className="dotted-accent-top" />
-              <MediaContent
-                video={props.fields.Video}
-                image={props.fields.Image}
-                className={`d-block ${isSideBySide ? 'mx-lg-auto' : 'mx-auto'} img-fluid ${
-                  !isPageEditing ? `fade-section ${isVisible ? 'is-visible' : ''}` : ''
-                }`}
-                isPageEditing={isPageEditing}
-                width={900}
-                height={900}
-              />
+              <div className="promo-cta-media-container">
+                <MediaContent
+                  video={props.fields.Video}
+                  image={props.fields.Image}
+                  className={`d-block ${isSideBySide ? 'mx-lg-auto' : 'mx-auto'} img-fluid ${
+                    !isPageEditing ? `fade-section ${isVisible ? 'is-visible' : ''}` : ''
+                  }`}
+                  isPageEditing={isPageEditing}
+                  width={900}
+                  height={900}
+                />
+                {(props.fields?.LayeredImage?.value?.src || props.fields?.LayeredVideo?.value?.src) && (
+                  <MediaContent
+                    video={props.fields.LayeredVideo}
+                    image={props.fields.LayeredImage}
+                    className="promo-cta-layered-media"
+                    isPageEditing={isPageEditing}
+                    width={900}
+                    height={900}
+                  />
+                )}
+              </div>
               <DottedAccent className="dotted-accent-bottom" />
             </div>
           </div>
@@ -258,6 +274,8 @@ export const Horizontal = (props: PromoCtaProps): JSX.Element => {
     props.fields?.Text?.value ||
     props.fields?.Image?.value?.src ||
     props.fields?.Video?.value?.src ||
+    props.fields?.LayeredImage?.value?.src ||
+    props.fields?.LayeredVideo?.value?.src ||
     props.fields?.Link?.value?.href ||
     props.fields?.Link2?.value?.href ||
     props.fields?.Eyebrow?.value;
@@ -316,16 +334,28 @@ export const Horizontal = (props: PromoCtaProps): JSX.Element => {
           <div className={imageColClass}>
             <div className="image-wrapper">
               <DottedAccent className="dotted-accent-top" />
-              <MediaContent
-                video={props.fields.Video}
-                image={props.fields.Image}
-                className={`d-block mx-lg-auto img-fluid ${
-                  !isPageEditing ? `fade-section ${isVisible ? 'is-visible' : ''}` : ''
-                }`}
-                isPageEditing={isPageEditing}
-                width={900}
-                height={900}
-              />
+              <div className="promo-cta-media-container">
+                <MediaContent
+                  video={props.fields.Video}
+                  image={props.fields.Image}
+                  className={`d-block mx-lg-auto img-fluid ${
+                    !isPageEditing ? `fade-section ${isVisible ? 'is-visible' : ''}` : ''
+                  }`}
+                  isPageEditing={isPageEditing}
+                  width={900}
+                  height={900}
+                />
+                {(props.fields?.LayeredImage?.value?.src || props.fields?.LayeredVideo?.value?.src) && (
+                  <MediaContent
+                    video={props.fields.LayeredVideo}
+                    image={props.fields.LayeredImage}
+                    className="promo-cta-layered-media"
+                    isPageEditing={isPageEditing}
+                    width={900}
+                    height={900}
+                  />
+                )}
+              </div>
               <DottedAccent className="dotted-accent-bottom" />
             </div>
           </div>

@@ -1,4 +1,11 @@
 .article-details {
+  // Remove background when "no-background" style is selected
+  &.no-background {
+    .background-content {
+      background-color: transparent !important;
+    }
+  }
+
   .article-content {
     .article-thumbnail-wrapper {
       overflow: hidden;
